@@ -1,0 +1,29 @@
+<div class="login-container">
+    <div class="left-item">
+        <h2 class="left-item-title">Únete a la mayor comunidad profesional</h2>
+        <p class="left-item-subtitle">Creá tu cuenta y encontrá tu empleo ideal</p>
+        <a href="/register" class="button">Crear cuenta</a>
+    </div>
+    <div class="right-item">
+        <div class="form-title"> Ingresar </div>
+        <form [formGroup]="loginForm" class="form-content">            
+
+            <input id="mail" type="email" formControlName="mail" 
+            class="form-input" placeholder="Email">
+          
+            <input id="password" type="password" formControlName="password" 
+            class="form-input" placeholder="Clave">
+
+            <div class="forgot-password">
+                <a href="/passwordrecovery" class="forgot-password-text">Olvidaste tu contraseña?</a>
+            </div>
+
+            <div class="form-group">
+                <button class="login-button">Login</button>
+              </div>
+          </form>
+    </div>
+</div>
+<div class="centered-image" >
+    <img src="/assets/login.png" alt="Centered Image">
+</div>

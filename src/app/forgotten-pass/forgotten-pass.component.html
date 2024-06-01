@@ -1,0 +1,23 @@
+<div class="left-item">
+  <h2 class="left-item-title">Recupera tu clave</h2>
+  <p class="left-item-subtitle">
+    Ingresa el mail con el que te registraste. Recibiras un código para
+    restablecer tu contraseña.
+  </p>
+  <form [formGroup]="recoveyPasswordForm" class="form-content">
+    <input
+      id="mail"
+      type="email"
+      formControlName="mail"
+      class="form-input"
+      placeholder="Email"
+    />
+
+    <div class="form-group">
+      <button class="login-button">Continuar</button>
+    </div>
+  </form>
+</div>
+<div class="right-image">
+  <img src="/assets/login.png" alt="Centered Image" />
+</div>

@@ -1,0 +1,28 @@
+<div class="form-container">
+    <div class="form-title"> Registrate </div>
+    <form [formGroup]="registerForm" class="form-content">            
+
+        <input id="mail" type="email" formControlName="mail" 
+        class="form-input" placeholder="Email">
+        
+        <input id="name" type="text" formControlName="name" 
+        class="form-input" placeholder="Nombre">
+
+        <input id="lastname" type="text" formControlName="lastname" 
+        class="form-input" placeholder="Apellido">
+
+        <input id="password" type="password" formControlName="password" 
+        class="form-input" placeholder="Clave">
+
+        <input id="repeatPassword" type="password" formControlName="repeatPassword" 
+        class="form-input" placeholder="Confirmar clave">
+      
+        <div class="form-group">
+            <button class="login-button">Registrarse</button>
+        </div>
+      </form>
+</div>
+
+<div class="right-image" >
+    <img src="/assets/login.png" alt="Centered Image">
+</div>
