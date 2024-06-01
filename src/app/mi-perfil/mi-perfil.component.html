@@ -1,0 +1,83 @@
+<div class="super-container">
+  <div class="left-container">
+    <div class="foto-container container">
+      @if (user.img) {
+      <img [src]="user.img" alt="User Image" (click)="triggerFileInput()" />
+      } @else {
+      <div class="placeholder" (click)="triggerFileInput()">No image</div>
+      }
+      <input
+        type="file"
+        #fileInput
+        (change)="onFileSelected($event)"
+        style="display: none"
+      />
+      <div class="nombre">Marcia Orozco</div>
+      <div class="puesto label">Frontend Developer</div>
+    </div>
+    <div class="datos-container container">
+      <div class="label">Email</div>
+      <div class="data">orozcomarcia</div>
+      <div class="label">Celular</div>
+      <div class="data">341222222</div>
+      <div class="label">Fecha de nacimiento</div>
+      <div class="data">Dec 18,2020</div>
+      <div class="label">Lugar de residencia</div>
+      <div class="data">Rosario, Santa Fe</div>
+      <img
+        src="/assets/pen.svg"
+        alt=""
+        (click)="datosEditable = true"
+        class="editar-pen"
+      />
+    </div>
+    <div class="cambiar-clave-container container">
+      <a href="" class="cambiar-clave">Cambiar contraseña</a>
+    </div>
+    <div class="eliminar-cuenta-container container">
+      <p class="eliminar-cuenta">Eliminar mi cuenta</p>
+    </div>
+  </div>
+  <div class="right-container">
+    <div class="sobre-mi-container container">
+      <div class="label">Sobre mi</div>
+      <div class="datos-sobre-mi">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod
+        viverra nisl non euismod. Pellentesque dignissim arcu orci, nec finibus
+        est lobortis sit amet. Integer vitae nulla est. Nullam vel ornare ex, id
+        auctor lacus . Duis dapibus interdum justo sed sagittis. Sed ac leo sit
+        amet erat auctor imperdiet. Sed in rutrum est. Maecenas ut commodo mi.
+        Praesent feugiat enim sed maximus volutpat. Nullam porttitor ipsum odio,
+        quis tempor nisl porta aliquet. Phasellus a bibendum massa.
+      </div>
+      <img
+        src="/assets/pen.svg"
+        alt=""
+        (click)="datosEditable = true"
+        class="editar-pen"
+      />
+    </div>
+    <div class="experiencia-skills-container">
+      <div class="experiencia-container container">
+        <div class="label">Experiencia laboral</div>
+        <div class="label">Cursos</div>
+        <div class="label">Estudios universitarios</div>
+        <img
+          src="/assets/pen.svg"
+          alt=""
+          (click)="datosEditable = true"
+          class="editar-pen"
+        />
+      </div>
+      <div class="skills-container container">
+        <div class="label">Skills</div>
+        <img
+          src="/assets/pen.svg"
+          alt=""
+          (click)="datosEditable = true"
+          class="editar-pen"
+        />
+      </div>
+    </div>
+  </div>
+</div>
