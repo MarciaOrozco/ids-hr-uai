@@ -1,0 +1,68 @@
+<div class="login-container">
+  <div class="left-item">
+    <h2 class="left-item-title">Únete a la mayor comunidad profesional</h2>
+    <p class="left-item-subtitle">Creá tu cuenta y encontrá tu empleo ideal</p>
+    <a href="/register" class="button">Crear cuenta</a>
+  </div>
+  <div class="right-item">
+    <div class="form-title">Ingresar</div>
+    <form [formGroup]="loginForm" class="form-content" (ngSubmit)="login()">
+      <input
+        id="Email"
+        type="email"
+        formControlName="email"
+        class="form-input"
+        placeholder="Email"
+      />
+      <div
+        *ngIf="
+          loginForm.get('email')?.invalid &&
+          (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)
+        "
+        class="error-message"
+      >
+        <div *ngIf="loginForm.get('email')?.errors?.['required']">
+          Email es requerido.
+        </div>
+        <div *ngIf="loginForm.get('email')?.errors?.['email']">
+          Email no es válido.
+        </div>
+      </div>
+
+      <input
+        id="clave"
+        type="password"
+        formControlName="clave"
+        class="form-input"
+        placeholder="Clave"
+      />
+      <div
+        *ngIf="
+          loginForm.get('clave')?.invalid &&
+          (loginForm.get('clave')?.dirty || loginForm.get('clave')?.touched)
+        "
+        class="error-message"
+      >
+        <div *ngIf="loginForm.get('clave')?.errors?.['required']">
+          Clave es requerida.
+        </div>
+        <div *ngIf="loginForm.get('clave')?.errors?.['incorrect']">
+          Clave incorrecta.
+        </div>
+      </div>
+
+      <div class="forgot-password">
+        <a href="/passwordrecovery" class="forgot-password-text"
+          >Olvidaste tu contraseña?</a
+        >
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="login-button">Login</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="centered-image">
+  <img src="/assets/login.png" alt="Centered Image" />
+</div>

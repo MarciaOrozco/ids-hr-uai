@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+@if (loggedIn) {
+<app-navbar></app-navbar>
+}
+
+<body>
+  <router-outlet></router-outlet>
+</body>

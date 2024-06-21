@@ -1,0 +1,17 @@
+<div class="modal-overlay" (click)="closeModal()"></div>
+<div class="modal">
+  <div class="modal-header">
+    <h2 class="eliminar-empleado">Eliminar Empleado NOMBRE NOMBRE</h2>
+    <button class="close-button" (click)="closeModal()">×</button>
+  </div>
+  <div class="modal-body">
+    <p>
+      Estas seguro que deseas eliminar a nombre nombre? Esta accion es
+      irreversible.
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button (click)="closeModal()" class="atras-button">Atras</button>
+    <button (click)="confirmDelete()" class="cancelar-button">Eliminar</button>
+  </div>
+</div>
