@@ -1,0 +1,53 @@
+<div class="form-container">
+  <div class="form-title">Crear empleado</div>
+  <form [formGroup]="registerEmpleadoForm" class="form-content">
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+      class="form-input"
+      placeholder="Email"
+    />
+
+    <input
+      id="nombre"
+      type="text"
+      formControlName="nombre"
+      class="form-input"
+      placeholder="Nombre"
+    />
+
+    <input
+      id="apellido"
+      type="text"
+      formControlName="apellido"
+      class="form-input"
+      placeholder="Apellido"
+    />
+
+    <input
+      id="clave"
+      type="password"
+      formControlName="clave"
+      class="form-input"
+      placeholder="Clave temporal"
+    />
+
+    <input
+      id="repetirclave"
+      type="password"
+      formControlName="repetirclave"
+      class="form-input"
+      placeholder="Confirmar clave temporal"
+    />
+
+    <div class="form-group">
+      <button class="login-button">Crear empleado</button>
+      <button class="cancelar-button">Cancelar</button>
+    </div>
+  </form>
+</div>
+
+<div class="right-image">
+  <img src="/assets/login.png" alt="Centered Image" />
+</div>

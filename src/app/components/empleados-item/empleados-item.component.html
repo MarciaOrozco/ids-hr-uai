@@ -1,0 +1,33 @@
+<div class="card-container">
+  <div class="first-container">
+    <div class="foto-container container">
+      @if (user.img) {
+      <img [src]="user.img" alt="User Image" (click)="triggerFileInput()" />
+      } @else {
+      <div class="placeholder" (click)="triggerFileInput()">No image</div>
+      }
+      <input
+        type="file"
+        #fileInput
+        (change)="onFileSelected($event)"
+        style="display: none"
+      />
+    </div>
+    <div class="datos-container">
+      <div class="label">Nombre:</div>
+      <div class="dato">Marcia Orzco</div>
+      <div class="label">Email:</div>
+      <div class="dato">orozcomarcia3&#64;gmail.com</div>
+    </div>
+  </div>
+
+  <div class="eliminar-button">
+    <button class="eliminar-button" (click)="abrirModal()">Eliminar</button>
+  </div>
+</div>
+@if (isModalOpen){<app-eliminar-empleado-modal
+  (closeModalEvent)="cerrarModal()"
+  (confirmDeleteEvent)="eliminarEmpleado()"
+>
+</app-eliminar-empleado-modal>
+}

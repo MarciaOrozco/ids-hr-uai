@@ -1,0 +1,52 @@
+<div class="form-container">
+  <div class="form-title">Registrate</div>
+  <form [formGroup]="registerForm" class="form-content" (ngSubmit)="register()">
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+      class="form-input"
+      placeholder="Email"
+    />
+
+    <input
+      id="nombre"
+      type="text"
+      formControlName="nombre"
+      class="form-input"
+      placeholder="Nombre"
+    />
+
+    <input
+      id="apellido"
+      type="text"
+      formControlName="apellido"
+      class="form-input"
+      placeholder="Apellido"
+    />
+
+    <input
+      id="clave"
+      type="password"
+      formControlName="clave"
+      class="form-input"
+      placeholder="Clave"
+    />
+
+    <input
+      id="repetirclave"
+      type="password"
+      formControlName="repetirclave"
+      class="form-input"
+      placeholder="Confirmar clave"
+    />
+
+    <div class="form-group">
+      <button class="login-button">Registrarse</button>
+    </div>
+  </form>
+</div>
+
+<div class="right-image">
+  <img src="/assets/login.png" alt="Centered Image" />
+</div>
