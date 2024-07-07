@@ -1,0 +1,44 @@
+<div class="modal-overlay" (click)="closeModal()"></div>
+<div class="form-container">
+  <div class="card-container">
+    <div class="first-container">
+      <div class="datos-container">
+        <form
+          [formGroup]="modifyNombreForm"
+          class="form-content"
+          (ngSubmit)="modificarNombreTitulo()"
+        >
+          <label for="apellido"> Nombre</label>
+          <input
+            id="nombre"
+            type="text"
+            formControlName="nombre"
+            class="form-input"
+          />
+
+          <label for="apellido"> Apellido</label>
+          <input
+            id="apellido"
+            type="text"
+            formControlName="apellido"
+            class="form-input"
+          />
+
+          <label for="titulo"> Titulo</label>
+          <input
+            id="titulo"
+            type="text"
+            formControlName="titulo"
+            class="form-input"
+          />
+        </form>
+      </div>
+    </div>
+
+    <div class="botones-container">
+      <button class="modificar-button" (click)="modificarNombreTitulo()">
+        Modificar
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,14 +1,24 @@
-<div class="navbar-container">
+<div class="navbar-container" *ngIf="loggedIn">
   <div class="logo-container">
-    <img src="../../../assets/logo.png" alt="" class="logo-img" />
+    <a href="/dashboard">
+      <img src="../../../assets/logo.png" alt="" class="logo-img" />
+    </a>
   </div>
+  @if (isPostulante){
+  <nav>
+    <ul>
+      <li><a href="/miperfil">Mi perfil</a></li>
+      <li><a href="/trabajos">Empleos</a></li>
+      <li><a href="#">Mis postulaciones</a></li>
+    </ul>
+  </nav>
+  } @else {
   <nav>
     <ul>
       <li><a href="#">Empleos</a></li>
-      <li><a href="#">Crear empleado</a></li>
-      <li><a href="#">Buscar postulantes</a></li>
-      <li><a href="#">Cambiar clave</a></li>
+      <li><a href="#">Empleados</a></li>
     </ul>
   </nav>
-  <div class="nombre-usuario">Bienvenido,</div>
+  }
+  <div (click)="logout()" class="logout-button">Salir</div>
 </div>
