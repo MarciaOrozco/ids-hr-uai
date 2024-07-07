@@ -1,10 +1,14 @@
 <div class="left-item">
   <h2 class="left-item-title">Recupera tu clave</h2>
   <p class="left-item-subtitle">
-    Ingresa el mail con el que te registraste. Recibiras un código para
+    Ingresa el mail con el que te registraste. Recibirás un código para
     restablecer tu contraseña.
   </p>
-  <form [formGroup]="recoveyPasswordForm" class="form-content">
+  <form
+    [formGroup]="recoveyPasswordForm"
+    class="form-content"
+    (ngSubmit)="onSubmit()"
+  >
     <input
       id="mail"
       type="email"
@@ -12,9 +16,12 @@
       class="form-input"
       placeholder="Email"
     />
-
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
     <div class="form-group">
-      <button class="login-button">Continuar</button>
+      <button type="submit" class="login-button">Continuar</button>
     </div>
   </form>
 </div>

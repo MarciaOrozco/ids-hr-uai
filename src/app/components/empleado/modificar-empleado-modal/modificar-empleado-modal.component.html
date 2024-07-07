@@ -1,0 +1,54 @@
+<div class="modal-overlay" (click)="closeModal()"></div>
+<div class="empleados-container">
+  <div class="card-container">
+    <div class="first-container">
+      <div class="foto-container container">
+        @if (user.img) {
+        <img [src]="user.img" alt="User Image" (click)="triggerFileInput()" />
+        } @else {
+        <div class="placeholder" (click)="triggerFileInput()">No image</div>
+        }
+        <input
+          type="file"
+          #fileInput
+          (change)="onFileSelected($event)"
+          style="display: none"
+        />
+      </div>
+      <div class="datos-container">
+        <form
+          [formGroup]="modifyEmpleadoForm"
+          class="form-content"
+          (ngSubmit)="modificarEmpleado()"
+        >
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            class="form-input"
+          />
+
+          <input
+            id="nombre"
+            type="text"
+            formControlName="nombre"
+            class="form-input"
+          />
+
+          <input
+            id="apellido"
+            type="text"
+            formControlName="apellido"
+            class="form-input"
+          />
+        </form>
+      </div>
+    </div>
+
+    <div class="botones-container">
+      <button class="modificar-button" (click)="modificarEmpleado()">
+        Modificar
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="modal-overlay" (click)="closeModal()"></div>
+<div class="form-container">
+  <div class="card-container">
+    <div class="first-container">
+      <div class="datos-container">
+        <form
+          [formGroup]="modifyNombreForm"
+          class="form-content"
+          (ngSubmit)="modificarDatos()"
+        >
+          <label for="apellido"> Celular</label>
+          <input
+            id="nombre"
+            type="text"
+            formControlName="nombre"
+            class="form-input"
+          />
+
+          <label for="fechaNacimiento"> Fecha de Nacimiento</label>
+          <input
+            type="date"
+            id="fechaNacimiento"
+            value="1990-01-01"
+            class="form-input"
+          />
+
+          <label for="ciudad"> Ciudad</label>
+          <select id="ciudad">
+            <option value="">--Please choose an option--</option>
+          </select>
+        </form>
+      </div>
+    </div>
+
+    <div class="botones-container">
+      <button class="modificar-button" (click)="modificarDatos()">
+        Modificar
+      </button>
+    </div>
+  </div>
+</div>

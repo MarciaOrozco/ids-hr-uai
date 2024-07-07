@@ -1,6 +1,10 @@
 <div class="form-container">
   <div class="form-title">Crear empleado</div>
-  <form [formGroup]="registerEmpleadoForm" class="form-content">
+  <form
+    [formGroup]="registerEmpleadoForm"
+    class="form-content"
+    (ngSubmit)="crearEmpleado()"
+  >
     <input
       id="email"
       type="email"

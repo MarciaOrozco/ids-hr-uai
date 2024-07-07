@@ -3,6 +3,10 @@
   background-color: #f0efff;
   box-shadow: 0px 4px 4px 3px #00000040;
   padding: 20px;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .super-container {
@@ -32,7 +36,7 @@
 
 .foto-container {
   width: 245px;
-  height: 200px;
+  height: 160px;
 }
 
 .datos-container {
@@ -62,7 +66,7 @@
   height: 430px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .skills-container {
@@ -119,4 +123,35 @@
 
 .nombre {
   font-size: 24px;
+}
+
+.experiencias {
+  padding-bottom: 10px;
+}
+
+.experiencia-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.experiencia-titulo {
+  color: #4540db;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.experiencia-nombre-empresa {
+}
+
+.experiencia-fechas {
+}
+
+.edicion-container {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.edicion-container-datos {
+  align-self: flex-end;
 }

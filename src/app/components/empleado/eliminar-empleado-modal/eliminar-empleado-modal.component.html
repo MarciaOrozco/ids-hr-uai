@@ -1,13 +1,16 @@
 <div class="modal-overlay" (click)="closeModal()"></div>
 <div class="modal">
   <div class="modal-header">
-    <h2 class="eliminar-empleado">Eliminar Empleado NOMBRE NOMBRE</h2>
+    <h2 class="eliminar-empleado">
+      Eliminar empleado {{ empleado.Persona.Nombre }}
+      {{ empleado.Persona.Apellido }}
+    </h2>
     <button class="close-button" (click)="closeModal()">×</button>
   </div>
   <div class="modal-body">
     <p>
-      Estas seguro que deseas eliminar a nombre nombre? Esta accion es
-      irreversible.
+      Estas seguro que deseas eliminar a {{ empleado.Persona.Nombre }}
+      {{ empleado.Persona.Apellido }}? Esta accion es irreversible.
     </p>
   </div>
   <div class="modal-footer">

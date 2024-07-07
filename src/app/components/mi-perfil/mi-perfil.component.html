@@ -1,5 +1,6 @@
 <div class="super-container">
   <div class="left-container">
+    <!-- Contenedor con nombre, apellido, foto y titulo -->
     <div class="foto-container container">
       @if (user.img) {
       <img [src]="user.img" alt="User Image" (click)="triggerFileInput()" />
@@ -12,25 +13,58 @@
         (change)="onFileSelected($event)"
         style="display: none"
       />
-      <div class="nombre">Marcia Orozco</div>
-      <div class="puesto label">Frontend Developer</div>
+      <div class="nombre">{{ nombre }} {{ apellido }}</div>
+      @if(postulante.Titulo){
+      <div class="puesto label">{{ postulante.Titulo }}</div>
+      } @else {
+      <div class="puesto label">Completa con tu titulo</div>
+      }
+      <div class="edicion-container">
+        <img
+          src="/assets/pen.svg"
+          alt=""
+          class="editar-pen"
+          (click)="abrirModalModificarNombre()"
+        />
+      </div>
     </div>
+
+    <!-- Contenedor con email, celular, fecha de nacimiento y lugar de residencia -->
     <div class="datos-container container">
       <div class="label">Email</div>
-      <div class="data">orozcomarcia</div>
+      <div class="data">{{ email }}</div>
       <div class="label">Celular</div>
-      <div class="data">341222222</div>
+      @if(postulante.Titulo){
+      <div class="data">{{ postulante.Telefono }}</div>
+      } @else {
+      <div class="data">Completar</div>
+      }
       <div class="label">Fecha de nacimiento</div>
-      <div class="data">Dec 18,2020</div>
+      @if(postulante.Titulo){
+      <div class="data">{{ postulante.FechaNacimiento }}</div>
+      } @else {
+      <div class="data">Completar</div>
+      }
       <div class="label">Lugar de residencia</div>
-      <div class="data">Rosario, Santa Fe</div>
-      <img
-        src="/assets/pen.svg"
-        alt=""
-        (click)="datosEditable = true"
-        class="editar-pen"
-      />
+      @if(postulante.Titulo){
+      <div class="data">
+        {{ postulanteResidencia.ciudad }}, {{ postulanteResidencia.provincia }},
+        {{ postulanteResidencia.pais }}
+      </div>
+      } @else {
+      <div class="data">Completar</div>
+      }
+      <div class="edicion-container-datos">
+        <img
+          src="/assets/pen.svg"
+          alt=""
+          class="editar-pen"
+          (click)="abrirModalModificarDatos()"
+        />
+      </div>
     </div>
+
+    <!-- Botones para cambiar clave y eliminar cuenta -->
     <div class="cambiar-clave-container container">
       <a href="" class="cambiar-clave">Cambiar contraseña</a>
     </div>
@@ -42,42 +76,55 @@
     <div class="sobre-mi-container container">
       <div class="label">Sobre mi</div>
       <div class="datos-sobre-mi">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis euismod
-        viverra nisl non euismod. Pellentesque dignissim arcu orci, nec finibus
-        est lobortis sit amet. Integer vitae nulla est. Nullam vel ornare ex, id
-        auctor lacus . Duis dapibus interdum justo sed sagittis. Sed ac leo sit
-        amet erat auctor imperdiet. Sed in rutrum est. Maecenas ut commodo mi.
-        Praesent feugiat enim sed maximus volutpat. Nullam porttitor ipsum odio,
-        quis tempor nisl porta aliquet. Phasellus a bibendum massa.
+        {{ postulante.Descripcion }}
       </div>
-      <img
-        src="/assets/pen.svg"
-        alt=""
-        (click)="datosEditable = true"
-        class="editar-pen"
-      />
+      <div class="edicion-container">
+        <img src="/assets/pen.svg" alt="" class="editar-pen" />
+      </div>
     </div>
     <div class="experiencia-skills-container">
       <div class="experiencia-container container">
-        <div class="label">Experiencia laboral</div>
+        <div class="label experiencias">Experiencia laboral</div>
+        <div *ngFor="let experiencia of experiencias">
+          <div class="experiencia-item">
+            <div class="experiencia-titulo">{{ experiencia.Puesto }}</div>
+            <div class="experiencia-nombre-empresa">
+              {{ experiencia.NombreEmpresa }}
+            </div>
+            <div class="experiencia-fechas">
+              {{ experiencia.FechaInicio | date : "dd/MM/yyyy" }} -
+              {{
+                experiencia.FechaFin
+                  ? (experiencia.FechaFin | date : "dd/MM/yyyy")
+                  : "Presente"
+              }}
+            </div>
+          </div>
+
+          <div>{{ experiencia.Descripcion }}</div>
+        </div>
         <div class="label">Cursos</div>
+
         <div class="label">Estudios universitarios</div>
-        <img
-          src="/assets/pen.svg"
-          alt=""
-          (click)="datosEditable = true"
-          class="editar-pen"
-        />
+        <!-- <div *ngFor="let universidad of universidades">{{universidad}}</div> -->
+        <div class="label">Estudios Secundarios</div>
+        <img src="/assets/pen.svg" alt="" class="editar-pen" />
       </div>
       <div class="skills-container container">
         <div class="label">Skills</div>
-        <img
-          src="/assets/pen.svg"
-          alt=""
-          (click)="datosEditable = true"
-          class="editar-pen"
-        />
+        <div *ngFor="let habilidad of habilidades">
+          {{ habilidad.TipoHabilidad.Tipo }}
+        </div>
+        <img src="/assets/pen.svg" alt="" class="editar-pen" />
       </div>
     </div>
   </div>
 </div>
+
+<!-- Modales -->
+
+@if (isModalModificarOpen){<app-nombre-popup (closeModalEvent)="cerrarModal()">
+</app-nombre-popup>
+} @if (isModalDatosOpen){<app-datos-popup (closeModalEvent)="cerrarModal()">
+</app-datos-popup>
+}
