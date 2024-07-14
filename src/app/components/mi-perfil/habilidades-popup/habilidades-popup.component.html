@@ -1,0 +1,38 @@
+<div class="modal-overlay" (click)="closeModal()"></div>
+<div class="form-container">
+  <div class="card-container">
+    <div class="habilidades-container">
+      <input
+        [formControl]="habilidadesControl"
+        type="text"
+        placeholder="Busca habilidades..."
+        (click)="onInputClick()"
+        class="form-input"
+      />
+      <div
+        *ngIf="dropdownOpen && filteredHabilidades.length > 0"
+        class="dropdown"
+      >
+        <div
+          *ngFor="let habilidad of filteredHabilidades"
+          (click)="habilidadesControl.setValue(habilidad)"
+          class="dropdown-item"
+        >
+          {{ habilidad }}
+        </div>
+      </div>
+
+      <div class="botones-container">
+        <button class="modificar-button" (click)="addHabilidad()">
+          Agregar
+        </button>
+      </div>
+    </div>
+
+    <div class="selected-habilidades">
+      <div *ngFor="let habilidad of selectedHabilidades">
+        {{ habilidad }}
+      </div>
+    </div>
+  </div>
+</div>

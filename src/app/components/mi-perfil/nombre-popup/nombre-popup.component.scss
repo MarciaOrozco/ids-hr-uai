@@ -26,7 +26,8 @@
   flex-direction: row;
 }
 
-.modificar-button {
+.modificar-button,
+.cancelar-button {
   background-color: #7eb1eb;
   width: 102px;
   height: 40px;
@@ -39,6 +40,10 @@
   &:active {
     outline: none;
   }
+}
+
+.cancelar-button {
+  background-color: #ff5652;
 }
 
 label {

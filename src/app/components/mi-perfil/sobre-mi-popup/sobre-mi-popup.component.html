@@ -1,0 +1,24 @@
+<div class="modal-overlay" (click)="closeModal()"></div>
+<div class="form-container">
+  <div class="card-container">
+    <form
+      [formGroup]="modifySobreMiForm"
+      class="form-content"
+      (ngSubmit)="modificarSobreMi()"
+    >
+      <label for="descripcion"> Sobre Mi</label>
+      <textarea
+        id="descripcion"
+        formControlName="descripcion"
+        class="form-input"
+      ></textarea>
+    </form>
+
+    <div class="botones-container">
+      <button class="cancelar-button" (click)="closeModal()">Cancelar</button>
+      <button class="modificar-button" (click)="modificarSobreMi()">
+        Modificar
+      </button>
+    </div>
+  </div>
+</div>

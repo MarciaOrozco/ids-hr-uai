@@ -11,6 +11,7 @@ import { ForgottenPassComponent } from './components/forgotten-pass/forgotten-pa
 import { EmpleadosComponent } from './components/empleado/empleados/empleados.component';
 import { noAuthGuard } from './utils/no-auth.guard';
 import { RoleEmpleadoGuard, RolePostulanteGuard } from './utils/role.guard';
+import { CambiarClaveComponent } from './components/cambiar-clave/cambiar-clave.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [noAuthGuard] },
@@ -21,6 +22,7 @@ export const routes: Routes = [
     canActivate: [noAuthGuard],
   },
   { path: 'passwordrecovery', component: ForgottenPassComponent },
+  { path: 'cambiar-clave', component: CambiarClaveComponent },
   {
     path: 'dashboard',
     canActivate: [authGuard],

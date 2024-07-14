@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Empleado } from '../../../interfaces/empleado';
 import { CrearEmpleadoService } from '../../../services/crear-empleado.service';
 
 @Component({

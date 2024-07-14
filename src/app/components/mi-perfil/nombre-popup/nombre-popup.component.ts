@@ -26,7 +26,7 @@ export class NombrePopupComponent implements OnInit {
     private _userService: UserService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.userId = localStorage.getItem('userId')!;
 
     this._postulanteService
@@ -47,11 +47,11 @@ export class NombrePopupComponent implements OnInit {
     });
   }
 
-  closeModal() {
+  public closeModal() {
     this.closeModalEvent.emit();
   }
 
-  modificarNombreTitulo() {
+  public modificarNombreTitulo() {
     const updatedPersona = {
       userId: this.userId,
       nombre: this.modifyNombreForm.value.nombre,
@@ -64,7 +64,9 @@ export class NombrePopupComponent implements OnInit {
     };
 
     this._userService.patchPersonaInfo(updatedPersona).subscribe();
-    this._postulanteService.patchPostulanteInfo(updatedPostulante).subscribe();
+    this._postulanteService
+      .modificarPostulanteInfo(updatedPostulante)
+      .subscribe();
     this.confirmModifyEvent.emit();
   }
 }
