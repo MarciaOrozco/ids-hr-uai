@@ -19,6 +19,8 @@ import { ModificarEmpleadoModalComponent } from '../modificar-empleado-modal/mod
 export class EmpleadosItemComponent implements OnInit {
   public empleados: any = [];
   public selectedEmpleadoId: any = null;
+  public isModalOpen = false;
+  public isModalModificarOpen = false;
 
   constructor(private _empleadosService: CrearEmpleadoService) {}
 
@@ -36,9 +38,6 @@ export class EmpleadosItemComponent implements OnInit {
   user = {
     img: '',
   };
-
-  isModalOpen = false;
-  isModalModificarOpen = false;
 
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;

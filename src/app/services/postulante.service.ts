@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Experiencia, Postulante } from '../interfaces/postulante';
 
 @Injectable({
   providedIn: 'root',
@@ -13,33 +14,78 @@ export class PostulanteService {
     this.myAppUrl = environment.endpoint;
   }
 
-  getPostulante(userId: any): Observable<any> {
+  getPostulante(userId: number): Observable<any> {
     return this.http.get(`${this.myAppUrl}postulantes/getPostulante/` + userId);
   }
 
-  getFormaciones(postulanteId: any): Observable<any> {
+  getFormaciones(postulanteId: number): Observable<any> {
     return this.http.get(
       `${this.myAppUrl}postulantes/getFormaciones/` + postulanteId
     );
   }
 
-  getExperiencias(postulanteId: any): Observable<any> {
+  getExperiencias(postulanteId: number): Observable<any> {
     return this.http.get(
       `${this.myAppUrl}postulantes/getExperiencias/` + postulanteId
     );
   }
 
-  getHabilidades(postulanteId: any): Observable<any> {
+  getHabilidades(postulanteId: number): Observable<any> {
     return this.http.get(
       `${this.myAppUrl}postulantes/getHabilidades/` + postulanteId
     );
   }
 
-  //Modificar
-  public patchPostulanteInfo(postulante: any): Observable<Object> {
+  getTipoHabilidades(): Observable<any> {
+    return this.http.get(`${this.myAppUrl}postulantes/getTipoHabilidades/`);
+  }
+
+  public modificarPostulanteInfo(postulante: any): Observable<Object> {
     return this.http.post(
       `${this.myAppUrl}postulantes/patchPostulante/`,
       postulante
+    );
+  }
+
+  public agregarExperiencias(experiencia: Experiencia): Observable<any> {
+    return this.http.post(
+      `${this.myAppUrl}postulantes/agregarExperiencias/` +
+        experiencia.PostulanteId,
+      experiencia
+    );
+  }
+
+  public agregarHabilidad(experiencia: Experiencia): Observable<any> {
+    return this.http.post(
+      `${this.myAppUrl}postulantes/agregarHabilidad/` +
+        experiencia.PostulanteId,
+      experiencia
+    );
+  }
+
+  public agregarFormacion(experiencia: Experiencia): Observable<any> {
+    return this.http.post(
+      `${this.myAppUrl}postulantes/agregarFormacion/` +
+        experiencia.PostulanteId,
+      experiencia
+    );
+  }
+
+  public deleteExperiencia(experienciaId: number): Observable<any> {
+    return this.http.delete(
+      `${this.myAppUrl}postulantes/deleteExperiencia/` + experienciaId
+    );
+  }
+
+  public deleteFormacion(formacionId: number): Observable<any> {
+    return this.http.delete(
+      `${this.myAppUrl}postulantes/deleteFormacion/` + formacionId
+    );
+  }
+
+  public deleteHabilidad(habilidadId: number): Observable<any> {
+    return this.http.delete(
+      `${this.myAppUrl}postulantes/deleteHabilidad/` + habilidadId
     );
   }
 }

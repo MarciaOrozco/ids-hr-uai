@@ -26,7 +26,8 @@
   flex-direction: row;
 }
 
-.modificar-button {
+.modificar-button,
+.cancelar-button {
   background-color: #7eb1eb;
   width: 102px;
   height: 40px;
@@ -39,6 +40,10 @@
   &:active {
     outline: none;
   }
+}
+
+.cancelar-button {
+  background-color: #ff5652;
 }
 
 label {
@@ -85,7 +90,8 @@ label {
   z-index: 1000;
 }
 
-.form-input {
+.form-input,
+select {
   background-color: #f0efff;
   height: 50px;
   width: 300px;
@@ -102,8 +108,26 @@ label {
   }
 }
 
+select {
+  width: 324px;
+}
+
 .form-content {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.residencia-container {
+  display: flex;
+  align-items: center;
+}
+
+.editar-pen-container {
+  margin-left: 8px;
+}
+
+.editar-pen {
+  max-width: 16px;
+  cursor: pointer;
 }

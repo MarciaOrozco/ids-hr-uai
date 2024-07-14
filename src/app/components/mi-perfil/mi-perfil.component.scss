@@ -54,24 +54,42 @@
   width: 245px;
   height: 15px;
   text-align: center;
+  cursor: pointer;
 }
 
 .sobre-mi-container {
   width: 1000px;
-  height: 160px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.experiencias-estudios-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .experiencia-container {
   width: 700px;
-  height: 430px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
+.estudios-container {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .skills-container {
   width: 245px;
   height: 430px;
+  display: flex;
+  flex-direction: column;
 }
 
 .foto-container {
@@ -110,6 +128,7 @@
   color: #ff5652;
   font-size: 15px;
   font-weight: bold;
+  margin: 0;
 }
 
 .cambiar-clave {
@@ -141,9 +160,11 @@
 }
 
 .experiencia-nombre-empresa {
+  font-weight: 500;
 }
 
 .experiencia-fechas {
+  font-style: italic;
 }
 
 .edicion-container {
@@ -154,4 +175,29 @@
 
 .edicion-container-datos {
   align-self: flex-end;
+}
+
+.editar-descripcion-pen {
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+.experiencia-titulo {
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+
+.experiencias-lista {
+  display: flex;
+  flex-direction: column;
+}
+
+.trash-container {
+  align-self: flex-end;
+}
+
+.skill-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

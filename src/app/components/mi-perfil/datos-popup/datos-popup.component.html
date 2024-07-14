@@ -4,15 +4,15 @@
     <div class="first-container">
       <div class="datos-container">
         <form
-          [formGroup]="modifyNombreForm"
+          [formGroup]="modifyDatosForm"
           class="form-content"
           (ngSubmit)="modificarDatos()"
         >
-          <label for="apellido"> Celular</label>
+          <label for="numero"> Celular</label>
           <input
-            id="nombre"
+            id="numero"
             type="text"
-            formControlName="nombre"
+            formControlName="numero"
             class="form-input"
           />
 
@@ -20,19 +20,63 @@
           <input
             type="date"
             id="fechaNacimiento"
+            formControlName="fechaNacimiento"
             value="1990-01-01"
             class="form-input"
           />
 
-          <label for="ciudad"> Ciudad</label>
-          <select id="ciudad">
-            <option value="">--Please choose an option--</option>
+          @if (ciudadSeleccionada){
+          <div class="residencia-container">
+            <label for="provincia">Residencia </label>
+            <div class="editar-pen-container">
+              <img
+                src="/assets/pen.svg"
+                alt=""
+                class="editar-pen"
+                (click)="ciudadSeleccionada = false"
+              />
+            </div>
+          </div>
+
+          <input
+            type="text"
+            id="residencia"
+            formControlName="residencia"
+            value="residencia"
+            class="form-input"
+          />
+          } @else {
+          <label for="pais">País</label>
+          <select id="pais" (change)="onPaisChange($event)">
+            <option value="">Elegir País</option>
+            <option *ngFor="let pais of paises" [value]="pais.id">
+              {{ pais.Nombre }}
+            </option>
           </select>
+
+          @if (paisSeleccionado){
+          <label for="provincia">Provincia</label>
+          <select id="provincia" (change)="onProvinciaChange($event)">
+            <option value="">Elegir Provincia</option>
+            <option *ngFor="let provincia of provincias" [value]="provincia.id">
+              {{ provincia.Nombre }}
+            </option>
+          </select>
+          } @if (provinciaSeleccionada) {
+          <label for="ciudad">Ciudad</label>
+          <select id="ciudad" formControlName="ciudad">
+            <option value="">Elegir Ciudad</option>
+            <option *ngFor="let ciudad of ciudades" [value]="ciudad.id">
+              {{ ciudad.Nombre }}
+            </option>
+          </select>
+          } }
         </form>
       </div>
     </div>
 
     <div class="botones-container">
+      <button class="cancelar-button" (click)="closeModal()">Cancelar</button>
       <button class="modificar-button" (click)="modificarDatos()">
         Modificar
       </button>

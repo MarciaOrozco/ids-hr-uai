@@ -1,0 +1,73 @@
+<div class="modal-overlay" (click)="closeModal()"></div>
+<div class="form-container">
+  <div class="card-container">
+    <div class="first-container">
+      <div class="datos-container">
+        <form
+          [formGroup]="modifyExperienciasForm"
+          class="form-content"
+          (ngSubmit)="modificarExperiencias()"
+        >
+          <label for="puesto"> Puesto</label>
+          <input
+            id="puesto"
+            type="text"
+            formControlName="puesto"
+            class="form-input"
+          />
+
+          <label for="nombreEmpresa"> Nombre de la empresa</label>
+          <input
+            id="nombreEmpresa"
+            type="text"
+            formControlName="nombreEmpresa"
+            class="form-input"
+          />
+
+          <label for="fechaInicio"> Fecha Inicio</label>
+          <input
+            type="date"
+            id="fechaInicio"
+            formControlName="fechaInicio"
+            value="2020-01-01"
+            class="form-input"
+          />
+
+          <label for="presente">
+            Puesto actual?
+            <input
+              type="checkbox"
+              id="presente"
+              formControlName="presente"
+              value="false"
+              class="checkbox-input"
+            />
+          </label>
+
+          <label for="fechaFin"> Fecha Fin</label>
+          <input
+            type="date"
+            id="fechaFin"
+            formControlName="fechaFin"
+            value="1990-01-01"
+            class="form-input"
+          />
+
+          <label for="descripcion"> Descripcion</label>
+          <textarea
+            id="descripcion"
+            formControlName="descripcion"
+            class="form-input"
+          ></textarea>
+        </form>
+      </div>
+    </div>
+
+    <div class="botones-container">
+      <button class="cancelar-button" (click)="closeModal()">Cancelar</button>
+      <button class="modificar-button" (click)="modificarExperiencias()">
+        Agregar
+      </button>
+    </div>
+  </div>
+</div>

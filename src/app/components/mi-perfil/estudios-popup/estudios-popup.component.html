@@ -1,0 +1,59 @@
+<div class="modal-overlay" (click)="closeModal()"></div>
+<div class="form-container">
+  <div class="card-container">
+    <div class="first-container">
+      <div class="datos-container">
+        <form
+          [formGroup]="agregarFormacionForm"
+          class="form-content"
+          (ngSubmit)="agregarFormacion()"
+        >
+          <label for="tipoEstudio"> Tipo formacion</label>
+          <select
+            name="tipoEstudio"
+            id="tipoEstudio"
+            formControlName="tipoEstudio"
+            class="form-input select"
+          >
+            <option value="universitarios">Universitarios</option>
+            <option value="curso">Curso</option>
+            <option value="maestria">Maestria</option>
+            <option value="otro">Otro</option>
+          </select>
+
+          <label for="fechaInicio"> Fecha Inicio</label>
+          <input
+            type="date"
+            id="fechaInicio"
+            formControlName="fechaInicio"
+            value="2020-01-01"
+            class="form-input"
+          />
+
+          <label for="fechaFin"> Fecha Fin</label>
+          <input
+            type="date"
+            id="fechaFin"
+            formControlName="fechaFin"
+            value="1990-01-01"
+            class="form-input"
+          />
+
+          <label for="descripcion"> Descripcion</label>
+          <textarea
+            id="descripcion"
+            formControlName="descripcion"
+            class="form-input"
+          ></textarea>
+        </form>
+      </div>
+    </div>
+
+    <div class="botones-container">
+      <button class="cancelar-button" (click)="closeModal()">Cancelar</button>
+      <button class="modificar-button" (click)="agregarFormacion()">
+        Agregar
+      </button>
+    </div>
+  </div>
+</div>

@@ -34,19 +34,19 @@
       <div class="label">Email</div>
       <div class="data">{{ email }}</div>
       <div class="label">Celular</div>
-      @if(postulante.Titulo){
+      @if(postulante.Telefono){
       <div class="data">{{ postulante.Telefono }}</div>
       } @else {
       <div class="data">Completar</div>
       }
       <div class="label">Fecha de nacimiento</div>
-      @if(postulante.Titulo){
-      <div class="data">{{ postulante.FechaNacimiento }}</div>
+      @if(postulante.FechaNacimiento){
+      <div class="data">{{ postulante.FechaNacimiento | date }}</div>
       } @else {
       <div class="data">Completar</div>
       }
       <div class="label">Lugar de residencia</div>
-      @if(postulante.Titulo){
+      @if(postulante.CiudadId){
       <div class="data">
         {{ postulanteResidencia.ciudad }}, {{ postulanteResidencia.provincia }},
         {{ postulanteResidencia.pais }}
@@ -65,31 +65,55 @@
     </div>
 
     <!-- Botones para cambiar clave y eliminar cuenta -->
-    <div class="cambiar-clave-container container">
-      <a href="" class="cambiar-clave">Cambiar contraseña</a>
+    <div class="cambiar-clave-container container" (click)="cambiarClave()">
+      <p class="cambiar-clave">Cambiar contraseña</p>
     </div>
-    <div class="eliminar-cuenta-container container">
+    <div class="eliminar-cuenta-container container" (click)="eliminarCuenta()">
       <p class="eliminar-cuenta">Eliminar mi cuenta</p>
     </div>
   </div>
+
+  <!-- Descripcion Sobre Mi -->
   <div class="right-container">
     <div class="sobre-mi-container container">
       <div class="label">Sobre mi</div>
+      @if(postulante.Descripcion){
       <div class="datos-sobre-mi">
         {{ postulante.Descripcion }}
       </div>
-      <div class="edicion-container">
-        <img src="/assets/pen.svg" alt="" class="editar-pen" />
+      } @else {
+      <div class="data">
+        Escribe un resumen para destacar tu personalidad o experiencia laboral
+      </div>
+      }
+      <div class="editar-descripcion-pen">
+        <img
+          src="/assets/pen.svg"
+          alt=""
+          class="editar-pen"
+          (click)="abrirModificarDescripcion()"
+        />
       </div>
     </div>
+
+    <!-- Experiencias -->
     <div class="experiencia-skills-container">
-      <div class="experiencia-container container">
-        <div class="label experiencias">Experiencia laboral</div>
-        <div *ngFor="let experiencia of experiencias">
-          <div class="experiencia-item">
-            <div class="experiencia-titulo">{{ experiencia.Puesto }}</div>
-            <div class="experiencia-nombre-empresa">
-              {{ experiencia.NombreEmpresa }}
+      <div class="experiencias-estudios-container">
+        <div class="experiencia-container container">
+          <div class="label experiencias">Experiencia laboral</div>
+
+          @if (experiencias.length !== 0){
+          <div
+            *ngFor="let experiencia of experiencias"
+            class="experiencias-lista"
+          >
+            <div class="experiencia-item">
+              <div class="experiencia-titulo">
+                {{ experiencia.Puesto }}
+              </div>
+              <div class="experiencia-nombre-empresa">
+                - {{ experiencia.NombreEmpresa }}
+              </div>
             </div>
             <div class="experiencia-fechas">
               {{ experiencia.FechaInicio | date : "dd/MM/yyyy" }} -
@@ -99,23 +123,128 @@
                   : "Presente"
               }}
             </div>
+            <div>{{ experiencia.Descripcion }}</div>
+            <div class="trash-container">
+              <img
+                src="/assets/trash.svg"
+                alt=""
+                class="editar-pen"
+                (click)="deleteExperiencia(experiencia)"
+              />
+            </div>
           </div>
-
-          <div>{{ experiencia.Descripcion }}</div>
+          } @else {
+          <div class="">Completa con las experiencias laborales</div>
+          }
+          <div class="editar-descripcion-pen">
+            <img
+              src="/assets/pen.svg"
+              alt=""
+              class="editar-pen"
+              (click)="abrirModificarExperiencia()"
+            />
+          </div>
         </div>
-        <div class="label">Cursos</div>
 
-        <div class="label">Estudios universitarios</div>
-        <!-- <div *ngFor="let universidad of universidades">{{universidad}}</div> -->
-        <div class="label">Estudios Secundarios</div>
-        <img src="/assets/pen.svg" alt="" class="editar-pen" />
+        <!------------------- Estudios ------------------------>
+        <div class="estudios-container container">
+          @if(universidades.length !== 0){
+          <div class="label">Estudios universitarios</div>
+          <div
+            *ngFor="let universidad of universidades"
+            class="experiencias-lista"
+          >
+            {{ universidad.Descripcion }}
+            {{ universidad.FechaInicio | date : "dd/MM/yyyy" }} -
+            {{ universidad.FechaFin | date : "dd/MM/yyyy" }}
+            <div class="trash-container">
+              <img
+                src="/assets/trash.svg"
+                class="editar-pen"
+                (click)="deleteFormacion(universidad)"
+              />
+            </div>
+          </div>
+          } @if(cursos.length !== 0){
+          <div class="label">Cursos</div>
+          <div *ngFor="let curso of cursos" class="experiencias-lista">
+            {{ curso.Descripcion }}
+            {{ curso.FechaInicio | date : "dd/MM/yyyy" }} -
+            {{ curso.FechaFin | date : "dd/MM/yyyy" }}
+            <div class="trash-container">
+              <img
+                src="/assets/trash.svg"
+                class="editar-pen"
+                (click)="deleteFormacion(curso)"
+              />
+            </div>
+          </div>
+          } @if(secundaria.length !== 0){
+          <div class="label">Estudios Secundarios</div>
+          <div *ngFor="let secundaria of secundaria" class="experiencias-lista">
+            {{ secundaria.Descripcion }}
+            {{ secundaria.FechaInicio | date : "dd/MM/yyyy" }} -
+            {{ secundaria.FechaFin | date : "dd/MM/yyyy" }}
+            <div class="trash-container">
+              <img
+                src="/assets/trash.svg"
+                class="editar-pen"
+                (click)="deleteFormacion(secundaria)"
+              />
+            </div>
+          </div>
+          }@if(otros.length !== 0){
+          <div class="label">Otros estudios</div>
+          <div *ngFor="let otro of otros" class="experiencias-lista">
+            {{ otro.Descripcion }}
+            {{ otro.FechaInicio | date : "dd/MM/yyyy" }} -
+            {{ otro.FechaFin | date : "dd/MM/yyyy" }}
+            <div class="trash-container">
+              <img
+                src="/assets/trash.svg"
+                class="editar-pen"
+                (click)="deleteFormacion(otro)"
+              />
+            </div>
+          </div>
+          }
+
+          <div class="editar-descripcion-pen">
+            <img
+              src="/assets/pen.svg"
+              alt=""
+              class="editar-pen"
+              (click)="abrirModificarFormacion()"
+            />
+          </div>
+        </div>
       </div>
+
+      <!------------------- Habilidades ------------------------>
       <div class="skills-container container">
         <div class="label">Skills</div>
-        <div *ngFor="let habilidad of habilidades">
-          {{ habilidad.TipoHabilidad.Tipo }}
+        <div *ngFor="let habilidad of habilidades" class="skill-container">
+          <div class="skill">
+            {{ habilidad.TipoHabilidad.Tipo }}
+          </div>
+
+          <div class="trash-container">
+            <img
+              src="/assets/trash.svg"
+              alt=""
+              class="editar-pen"
+              (click)="deleteHabilidad(habilidad)"
+            />
+          </div>
         </div>
-        <img src="/assets/pen.svg" alt="" class="editar-pen" />
+        <div class="editar-descripcion-pen">
+          <img
+            src="/assets/pen.svg"
+            alt=""
+            class="editar-pen"
+            (click)="abrirModificarHabilidades()"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -123,8 +252,42 @@
 
 <!-- Modales -->
 
-@if (isModalModificarOpen){<app-nombre-popup (closeModalEvent)="cerrarModal()">
+@if (isModalModificarOpen){<app-nombre-popup
+  (closeModalEvent)="cerrarModal()"
+  (confirmModifyEvent)="cerrarModal()"
+>
 </app-nombre-popup>
-} @if (isModalDatosOpen){<app-datos-popup (closeModalEvent)="cerrarModal()">
+} @if (isModalDatosOpen){<app-datos-popup
+  (closeModalEvent)="cerrarModal()"
+  (confirmModifyEvent)="cerrarModal()"
+>
 </app-datos-popup>
-}
+} @if (isModificarDescripcionOpen){<app-sobre-mi-popup
+  (closeModalEvent)="cerrarModal()"
+  (confirmModifyEvent)="cerrarModal()"
+>
+</app-sobre-mi-popup>
+} @if (isModificarExperiencianOpen){<app-experiencias-popup
+  [postulanteId]="postulante.id"
+  (closeModalEvent)="cerrarModal()"
+  (confirmModifyEvent)="cerrarModal()"
+>
+</app-experiencias-popup>
+} @if (isModificarEstudiosOpen){<app-estudios-popup
+  [postulanteId]="postulante.id"
+  (closeModalEvent)="cerrarModal()"
+  (confirmModifyEvent)="cerrarModal()"
+>
+</app-estudios-popup
+>} @if (isModificarHabilidadesOpen){<app-habilidades-popup
+  [postulanteId]="postulante.id"
+  (closeModalEvent)="cerrarModal()"
+  (confirmModifyEvent)="cerrarModal()"
+>
+</app-habilidades-popup
+>}@if (isEliminarUsuarioOpen){<app-eliminar-usuario-popup
+  [postulanteId]="postulante.id"
+  (closeModalEvent)="cerrarModal()"
+>
+</app-eliminar-usuario-popup
+>}

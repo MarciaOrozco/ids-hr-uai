@@ -2,12 +2,12 @@ import { Persona } from './persona';
 
 export interface Postulante extends Persona {
   id?: number;
-  Titulo: string;
-  Telefono: number;
-  FechaNacimiento: Date;
-  Persona: Persona;
-  Descripcion: string;
-  CiudadId: number;
+  Titulo?: string;
+  Telefono?: number;
+  FechaNacimiento?: Date;
+  Persona?: Persona;
+  Descripcion?: string;
+  CiudadId?: number;
 }
 
 export interface Experiencia {
@@ -18,6 +18,7 @@ export interface Experiencia {
   NombreEmpresa: string;
   Presente: boolean;
   Puesto: string;
+  PostulanteId: number;
 }
 
 export interface Formacion {
