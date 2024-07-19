@@ -12,27 +12,27 @@ export class CrearEmpleadoService {
 
   constructor(private http: HttpClient) {}
 
-  verEmpleados(): Observable<any> {
+  public verEmpleados(): Observable<any> {
     return this.http.get(`${this.myAppUrl}empleados/listaEmpleados`);
   }
 
-  verEmpleado(empleadoId: any): Observable<any> {
+  public verEmpleado(empleadoId: any): Observable<any> {
     return this.http.get(
       `${this.myAppUrl}empleados/get-empleado/` + empleadoId
     );
   }
 
-  crearEmpleado(empleado: Empleado): Observable<any> {
+  public crearEmpleado(empleado: Empleado): Observable<any> {
     return this.http.post(`${this.myAppUrl}empleados/crear-empleado`, empleado);
   }
 
-  eliminarEmpleado(empleadoId: any): Observable<any> {
+  public eliminarEmpleado(empleadoId: any): Observable<any> {
     return this.http.delete(
       `${this.myAppUrl}empleados/eliminar-empleado/` + empleadoId
     );
   }
 
-  modificarEmpleado(empleado: any): Observable<any> {
+  public modificarEmpleado(empleado: any): Observable<any> {
     return this.http.patch(
       `${this.myAppUrl}empleados/modificar-empleado/${empleado.id}`,
       empleado

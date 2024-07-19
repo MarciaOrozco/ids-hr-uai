@@ -19,14 +19,6 @@
       } @else {
       <div class="puesto label">Completa con tu titulo</div>
       }
-      <div class="edicion-container">
-        <img
-          src="/assets/pen.svg"
-          alt=""
-          class="editar-pen"
-          (click)="abrirModalModificarNombre()"
-        />
-      </div>
     </div>
 
     <!-- Contenedor con email, celular, fecha de nacimiento y lugar de residencia -->
@@ -37,13 +29,13 @@
       @if(postulante.Telefono){
       <div class="data">{{ postulante.Telefono }}</div>
       } @else {
-      <div class="data">Completar</div>
+      <div class="data">No completo</div>
       }
       <div class="label">Fecha de nacimiento</div>
       @if(postulante.FechaNacimiento){
       <div class="data">{{ postulante.FechaNacimiento | date }}</div>
       } @else {
-      <div class="data">Completar</div>
+      <div class="data">No completo</div>
       }
       <div class="label">Lugar de residencia</div>
       @if(postulante.CiudadId){
@@ -52,24 +44,22 @@
         {{ postulanteResidencia.pais }}
       </div>
       } @else {
-      <div class="data">Completar</div>
+      <div class="data">No completo</div>
       }
-      <div class="edicion-container-datos">
-        <img
-          src="/assets/pen.svg"
-          alt=""
-          class="editar-pen"
-          (click)="abrirModalModificarDatos()"
-        />
-      </div>
     </div>
 
     <!-- Botones para cambiar clave y eliminar cuenta -->
-    <div class="cambiar-clave-container container" (click)="cambiarClave()">
-      <p class="cambiar-clave">Cambiar contraseña</p>
+    <div
+      class="cambiar-clave-container container"
+      (click)="aprobarPostulante()"
+    >
+      <p class="cambiar-clave">Aprobar postulante</p>
     </div>
-    <div class="eliminar-cuenta-container container" (click)="eliminarCuenta()">
-      <p class="eliminar-cuenta">Eliminar mi cuenta</p>
+    <div
+      class="eliminar-cuenta-container container"
+      (click)="rechazarPostulante()"
+    >
+      <p class="eliminar-cuenta">Rechazar postulante</p>
     </div>
   </div>
 
@@ -86,14 +76,6 @@
         Escribe un resumen para destacar tu personalidad o experiencia laboral
       </div>
       }
-      <div class="editar-descripcion-pen">
-        <img
-          src="/assets/pen.svg"
-          alt=""
-          class="editar-pen"
-          (click)="abrirModificarDescripcion()"
-        />
-      </div>
     </div>
 
     <!-- Experiencias -->
@@ -124,26 +106,10 @@
               }}
             </div>
             <div>{{ experiencia.Descripcion }}</div>
-            <div class="trash-container">
-              <img
-                src="/assets/trash.svg"
-                alt=""
-                class="editar-pen"
-                (click)="deleteExperiencia(experiencia)"
-              />
-            </div>
           </div>
           } @else {
-          <div class="">Completa con las experiencias laborales</div>
+          <div class="">No completo</div>
           }
-          <div class="editar-descripcion-pen">
-            <img
-              src="/assets/pen.svg"
-              alt=""
-              class="editar-pen"
-              (click)="abrirModificarExperiencia()"
-            />
-          </div>
         </div>
 
         <!------------------- Estudios ------------------------>
@@ -152,7 +118,7 @@
           @if (universidades.length == 0 && cursos.length == 0 &&
           secundaria.length == 0 && otros.length == 0){
           <div class="label">Formaciones</div>
-          <div class="">Completa con tus estudios</div>
+          <div class="">No completo</div>
           } @if(universidades.length !== 0){
           <div class="label">Estudios universitarios</div>
           <div
@@ -162,13 +128,6 @@
             {{ universidad.Descripcion }}
             {{ universidad.FechaInicio | date : "dd/MM/yyyy" }} -
             {{ universidad.FechaFin | date : "dd/MM/yyyy" }}
-            <div class="trash-container">
-              <img
-                src="/assets/trash.svg"
-                class="editar-pen"
-                (click)="deleteFormacion(universidad)"
-              />
-            </div>
           </div>
           } @if(cursos.length !== 0){
           <div class="label">Cursos</div>
@@ -176,13 +135,6 @@
             {{ curso.Descripcion }}
             {{ curso.FechaInicio | date : "dd/MM/yyyy" }} -
             {{ curso.FechaFin | date : "dd/MM/yyyy" }}
-            <div class="trash-container">
-              <img
-                src="/assets/trash.svg"
-                class="editar-pen"
-                (click)="deleteFormacion(curso)"
-              />
-            </div>
           </div>
           } @if(secundaria.length !== 0){
           <div class="label">Estudios Secundarios</div>
@@ -190,13 +142,6 @@
             {{ secundaria.Descripcion }}
             {{ secundaria.FechaInicio | date : "dd/MM/yyyy" }} -
             {{ secundaria.FechaFin | date : "dd/MM/yyyy" }}
-            <div class="trash-container">
-              <img
-                src="/assets/trash.svg"
-                class="editar-pen"
-                (click)="deleteFormacion(secundaria)"
-              />
-            </div>
           </div>
           }@if(otros.length !== 0){
           <div class="label">Otros estudios</div>
@@ -204,24 +149,8 @@
             {{ otro.Descripcion }}
             {{ otro.FechaInicio | date : "dd/MM/yyyy" }} -
             {{ otro.FechaFin | date : "dd/MM/yyyy" }}
-            <div class="trash-container">
-              <img
-                src="/assets/trash.svg"
-                class="editar-pen"
-                (click)="deleteFormacion(otro)"
-              />
-            </div>
           </div>
           }
-
-          <div class="editar-descripcion-pen">
-            <img
-              src="/assets/pen.svg"
-              alt=""
-              class="editar-pen"
-              (click)="abrirModificarFormacion()"
-            />
-          </div>
         </div>
       </div>
 
@@ -229,73 +158,15 @@
       <div class="skills-container container">
         <div class="label">Skills</div>
         @if(habilidades.length == 0){
-        <div class="">Completa con tus habilidades</div>
+        <div class="">No completo</div>
         }
 
         <div *ngFor="let habilidad of habilidades" class="skill-container">
           <div class="skill">
             {{ habilidad.TipoHabilidad.Tipo }}
           </div>
-
-          <div class="trash-container">
-            <img
-              src="/assets/trash.svg"
-              alt=""
-              class="editar-pen"
-              (click)="deleteHabilidad(habilidad)"
-            />
-          </div>
-        </div>
-        <div class="editar-descripcion-pen">
-          <img
-            src="/assets/pen.svg"
-            alt=""
-            class="editar-pen"
-            (click)="abrirModificarHabilidades()"
-          />
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<!-- Modales -->
-
-@if (isModalModificarOpen){<app-nombre-popup
-  (closeModalEvent)="cerrarModal()"
-  (confirmModifyEvent)="cerrarModal()"
->
-</app-nombre-popup>
-} @if (isModalDatosOpen){<app-datos-popup
-  (closeModalEvent)="cerrarModal()"
-  (confirmModifyEvent)="cerrarModal()"
->
-</app-datos-popup>
-} @if (isModificarDescripcionOpen){<app-sobre-mi-popup
-  (closeModalEvent)="cerrarModal()"
-  (confirmModifyEvent)="cerrarModal()"
->
-</app-sobre-mi-popup>
-} @if (isModificarExperiencianOpen){<app-experiencias-popup
-  [postulanteId]="postulante.id"
-  (closeModalEvent)="cerrarModal()"
-  (confirmModifyEvent)="cerrarModal()"
->
-</app-experiencias-popup>
-} @if (isModificarEstudiosOpen){<app-estudios-popup
-  [postulanteId]="postulante.id"
-  (closeModalEvent)="cerrarModal()"
-  (confirmModifyEvent)="cerrarModal()"
->
-</app-estudios-popup
->} @if (isModificarHabilidadesOpen){<app-habilidades-popup
-  [postulanteId]="postulante.id"
-  (closeModalEvent)="cerrarModal()"
-  (confirmModifyEvent)="cerrarModal()"
->
-</app-habilidades-popup
->}@if (isEliminarUsuarioOpen){<app-eliminar-usuario-popup
-  (closeModalEvent)="cerrarModal()"
->
-</app-eliminar-usuario-popup
->}

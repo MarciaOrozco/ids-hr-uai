@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { BehaviorSubject, Observable, catchError, of, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Usuario } from '../interfaces/usuarios';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
@@ -59,7 +59,7 @@ export class UserService {
     this.router.navigate(['/login']);
   }
 
-  sendRecoveryEmail(email: any): Observable<void> {
+  public sendRecoveryEmail(email: any): Observable<void> {
     return this.http.post<void>(`${this.myAppUrl}/recover-password`, { email });
   }
 
@@ -91,5 +91,17 @@ export class UserService {
         this.userGroupSubject.next(false);
       }
     }
+  }
+
+  public cambiarClave(
+    claveAnterior: string,
+    nuevaClave: string
+  ): Observable<any> {
+    const userId = localStorage.getItem('userId');
+    return this.http.patch(`${this.myAppUrl}${this.myApiUrl}/cambiar-clave`, {
+      userId,
+      claveAnterior,
+      nuevaClave,
+    });
   }
 }

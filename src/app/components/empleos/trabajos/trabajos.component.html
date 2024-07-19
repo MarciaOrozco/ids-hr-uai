@@ -9,16 +9,27 @@
             ></path>
           </g>
         </svg>
-        <input placeholder="Search" type="search" class="input" />
+        <input
+          placeholder="Search"
+          type="search"
+          class="input"
+          (input)="onSearchTextChange($event)"
+        />
       </div>
       <div class="buscar-button-container">
         <button class="button">Buscar</button>
       </div>
     </div>
 
-    <div class="crear-button-container"></div>
+    @if(!isPostulante){
+    <div class="crear-button-container">
+      <button class="button crear-empleo-button" (click)="crearEmpleo()">
+        Crear empeleo
+      </button>
+    </div>
+    }
   </div>
   <div class="trabajos-container">
-    <app-trabajo-item></app-trabajo-item>
+    <app-trabajo-item [searchText]="searchText"></app-trabajo-item>
   </div>
 </div>

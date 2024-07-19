@@ -1,0 +1,152 @@
+.form-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.container {
+  position: absolute;
+  padding-top: 30px;
+  left: 15%;
+}
+
+.form-input,
+select {
+  background-color: #f0efff;
+  height: 50px;
+  width: 380px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  padding-left: 25px;
+  font-family: "Montserrat", sans-serif;
+  &::placeholder {
+    color: #6f68f7;
+  }
+}
+
+select {
+  width: 268px;
+  color: #6f68f7;
+  border-right: 10px solid transparent;
+}
+
+option {
+  color: #6f68f7;
+}
+.text-descripcion {
+  height: 300px;
+  width: 800px;
+  padding-top: 20px;
+}
+
+label {
+  color: #8680f8;
+}
+
+.login-button {
+  background-color: #4d47c3;
+  width: 200px;
+  height: 50px;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 4px 10px rgb(77 71 195 / 72%);
+  font-family: "Montserrat", sans-serif;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+.cancelar-button {
+  background-color: #ff5652;
+  width: 102px;
+  height: 50px;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+.form-title {
+  font-size: 20px;
+  padding-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.first-container,
+.second-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.modificar-button {
+  background-color: #4540db;
+  width: 102px;
+  height: 40px;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+.habilidades-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 52px;
+  width: 75%;
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background-color: white;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+.selected-habilidades {
+  margin-top: 20px;
+}
+
+.selected-habilidades > div {
+  padding: 5px;
+  margin-top: 5px;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}

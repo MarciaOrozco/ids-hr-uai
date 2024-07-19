@@ -1,0 +1,74 @@
+@if (empleo) {
+<div class="card-container">
+  <div class="container">
+    <div class="header">
+      <div class="job-title">{{ empleo.empleo.Titulo }}</div>
+      <div class="info-header">
+        {{ empleo.empleo.Remoto ? "Remoto" : "Presencial" }}
+      </div>
+    </div>
+
+    <div class="descripcion-container">{{ empleo.empleo.Descripcion }}</div>
+    @if (empleoOrigen){
+    <div class="info-ciudad">
+      {{ empleoOrigen.ciudad }}, {{ empleoOrigen.provincia }},
+      {{ empleoOrigen.pais }}
+    </div>
+    }
+    <div class="footer-container">
+      <div class="skills-container">
+        <p class="skills">Skills:</p>
+        <div *ngFor="let habilidad of empleo.habilidades" class="lista-skills">
+          {{ habilidad.TipoHabilidad.Tipo }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}
+
+<div class="card-container">
+  <div class="container">
+    <div class="header">
+      <div class="job-title">Postulantes</div>
+    </div>
+    @if (postulaciones.length > 0) {
+    <table>
+      <thead>
+        <tr>
+          <th>Nº de postulacion</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (postulacion of postulaciones; track postulacion.id) {
+        <tr>
+          <td>{{ postulacion.id }}</td>
+          <td>{{ postulacion.Postulante.Persona.Nombre }}</td>
+          <td>{{ postulacion.Postulante.Persona.Apellido }}</td>
+          <td>{{ postulacion.Estado.Estado }}</td>
+          <td>
+            <button
+              class="apply-button"
+              (click)="
+                verPerfil(
+                  postulacion.Postulante.Persona.UsuarioId,
+                  postulacion.id
+                )
+              "
+            >
+              Ver perfil
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    } @else {
+    <div>There are no items.</div>
+    }
+  </div>
+</div>

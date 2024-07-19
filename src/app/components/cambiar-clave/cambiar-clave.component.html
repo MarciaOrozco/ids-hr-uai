@@ -12,6 +12,12 @@
       class="form-input"
       placeholder="Clave anterior"
     />
+    @if(formErrors.claveAnterior){
+    <div class="error-message">
+      {{ formErrors.claveAnterior }}
+    </div>
+    }
+
     <input
       id="nuevaClave"
       type="password"
@@ -19,6 +25,13 @@
       class="form-input"
       placeholder="Nueva clave"
     />
+
+    @if(formErrors.nuevaClave){
+    <div class="error-message">
+      {{ formErrors.nuevaClave }}
+    </div>
+    }
+
     <input
       id="repetirClave"
       type="password"
@@ -27,9 +40,25 @@
       placeholder="Repetir nueva clave"
     />
 
+    @if(formErrors.repetirClave){
+    <div class="error-message">
+      {{ formErrors.repetirClave }}
+    </div>
+    }
+
     <div class="form-group">
       <button type="submit" class="login-button">Cambiar clave</button>
     </div>
+
+    @if(successMessage){
+    <div class="success-message">
+      {{ successMessage }}
+    </div>
+    } @if(errorMessage){
+    <div class="error-message">
+      {{ errorMessage }}
+    </div>
+    }
   </form>
 </div>
 <div class="right-image">
