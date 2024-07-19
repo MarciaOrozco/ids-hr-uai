@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { PostulanteService } from '../../../services/postulante.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-eliminar-usuario-popup',
@@ -9,9 +11,24 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class EliminarUsuarioPopupComponent {
   @Output() closeModalEvent = new EventEmitter<void>();
-  @Input() postulanteId!: number | undefined;
+  public userId = '';
+
+  constructor(
+    private _postulanteService: PostulanteService,
+    public _userService: UserService
+  ) {}
 
   public closeModal() {
     this.closeModalEvent.emit();
+  }
+
+  ngOnInit(): void {
+    this.userId = localStorage.getItem('userId')!;
+  }
+
+  public eliminarUsuario() {
+    this._postulanteService.eliminarPostulante(this.userId).subscribe((res) => {
+      this._userService.logout();
+    });
   }
 }

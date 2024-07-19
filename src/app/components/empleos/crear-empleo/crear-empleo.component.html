@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="form-title">Crear empleo</div>
+  <div class="form-container">
+    <form [formGroup]="empleo" class="form-content">
+      <div class="first-container">
+        <input
+          id="titulo"
+          type="text"
+          formControlName="titulo"
+          class="form-input"
+          placeholder="Titulo del empleo"
+        />
+
+        <input
+          id="empresa"
+          type="text"
+          formControlName="empresa"
+          class="form-input"
+          placeholder="Nombre de la empresa"
+        />
+      </div>
+      <div class="second-container">
+        <select id="pais" (change)="onPaisChange($event)">
+          <option value="">Elegir País</option>
+          <option *ngFor="let pais of paises" [value]="pais.id">
+            {{ pais.Nombre }}
+          </option>
+        </select>
+
+        @if (paisSeleccionado){
+        <select id="provincia" (change)="onProvinciaChange($event)">
+          <option value="">Elegir Provincia</option>
+          <option *ngFor="let provincia of provincias" [value]="provincia.id">
+            {{ provincia.Nombre }}
+          </option>
+        </select>
+        } @if (provinciaSeleccionada) {
+        <select id="ciudad" formControlName="ciudad">
+          <option value="">Elegir Ciudad</option>
+          <option *ngFor="let ciudad of ciudades" [value]="ciudad.id">
+            {{ ciudad.Nombre }}
+          </option>
+        </select>
+        }
+      </div>
+
+      <select id="esRemoto" formControlName="esRemoto">
+        <option value="remoto">Remoto</option>
+        <option value="presencial">Presencial</option>
+      </select>
+
+      <textarea
+        id="descripcion"
+        formControlName="descripcion"
+        class="form-input text-descripcion"
+        placeholder="Agrega la descripcion del empleo"
+      ></textarea>
+
+      <div class="habilidades-container">
+        <input
+          type="text"
+          [formControl]="habilidadesControl"
+          placeholder="Busca habilidades..."
+          (click)="onInputClick()"
+          class="form-input"
+        />
+        @if(dropdownOpen && filteredHabilidades.length > 0){
+        <div class="dropdown">
+          <div
+            *ngFor="let habilidad of filteredHabilidades"
+            (click)="habilidadesControl.setValue(habilidad)"
+            class="dropdown-item"
+          >
+            {{ habilidad }}
+          </div>
+        </div>
+        }
+
+        <div class="botones-container">
+          <button class="modificar-button" (click)="addHabilidad()">
+            Agregar
+          </button>
+        </div>
+      </div>
+
+      <div class="selected-habilidades">
+        <div *ngFor="let habilidad of selectedHabilidades">
+          {{ habilidad }}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button class="login-button" (click)="agregarEmpleo()">
+          Crear empleo
+        </button>
+        <button class="cancelar-button">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

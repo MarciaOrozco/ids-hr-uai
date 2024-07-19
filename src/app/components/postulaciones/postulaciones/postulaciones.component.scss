@@ -1,0 +1,117 @@
+.container {
+  min-width: 800px;
+  max-width: 900px;
+  padding: 30px;
+  border-radius: 30px;
+  background-color: #f0efff;
+  box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.2509803922);
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.job-title {
+  font-size: 30px;
+  padding-bottom: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.info-header {
+  color: #826dd3;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.lista-skills {
+  display: inline-block;
+  background-color: #dfdaf3;
+  color: #826dd3;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.skills {
+  padding: 0px 15px;
+  font-weight: 600;
+}
+
+.info-header {
+  color: #826dd3;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.button-container {
+  align-self: flex-end;
+}
+
+.info-ciudad {
+  font-weight: 500;
+  padding-top: 20px;
+  color: #4d47c3;
+}
+.disabled {
+  background-color: #a29fdb;
+}
+
+.job-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f0f0ff;
+  color: #333;
+}
+
+.apply-button {
+  background-color: #5c6bc0;
+  padding: 5px 10px;
+  width: 96px;
+  height: 43px;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 4px 10px rgba(77, 71, 195, 0.72);
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  &:focus,
+  &:active {
+    outline: none;
+    background-color: #3949ab;
+  }
+}

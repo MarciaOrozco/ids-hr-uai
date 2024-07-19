@@ -1,46 +1,30 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { PostulanteService } from '../../services/postulante.service';
-import { CiudadService } from '../../services/ciudad.service';
+import { DatePipe, NgFor } from '@angular/common';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Ciudad } from '../../../interfaces/ciudad';
 import {
   Experiencia,
   Formacion,
   Habilidad,
   Postulante,
-} from '../../interfaces/postulante';
-import { Ciudad } from '../../interfaces/ciudad';
-import { forkJoin } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
-import { DatePipe, NgFor } from '@angular/common';
-import { UserService } from '../../services/user.service';
-import { NombrePopupComponent } from './nombre-popup/nombre-popup.component';
-import { DatosPopupComponent } from './datos-popup/datos-popup.component';
-import { SobreMiPopupComponent } from './sobre-mi-popup/sobre-mi-popup.component';
-import { ExperienciasPopupComponent } from './experiencias-popup/experiencias-popup.component';
-import { HabilidadesPopupComponent } from './habilidades-popup/habilidades-popup.component';
-import { EstudiosPopupComponent } from './estudios-popup/estudios-popup.component';
-import { Router } from '@angular/router';
-import { EliminarUsuarioPopupComponent } from './eliminar-usuario-popup/eliminar-usuario-popup.component';
+} from '../../../interfaces/postulante';
+import { PostulanteService } from '../../../services/postulante.service';
+import { CiudadService } from '../../../services/ciudad.service';
+import { UserService } from '../../../services/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { forkJoin, switchMap, tap } from 'rxjs';
+import { PostulacionesService } from '../../../services/postulaciones.service';
 
 @Component({
-  selector: 'app-mi-perfil',
+  selector: 'app-perfil-postulante',
   standalone: true,
-  imports: [
-    NgFor,
-    DatePipe,
-    NombrePopupComponent,
-    DatosPopupComponent,
-    SobreMiPopupComponent,
-    ExperienciasPopupComponent,
-    HabilidadesPopupComponent,
-    EstudiosPopupComponent,
-    EliminarUsuarioPopupComponent,
-  ],
-  templateUrl: './mi-perfil.component.html',
-  styleUrls: ['./mi-perfil.component.scss'],
+  imports: [NgFor, DatePipe],
+  templateUrl: './perfil-postulante.component.html',
+  styleUrl: './perfil-postulante.component.scss',
 })
-export class MiPerfilComponent implements OnInit {
+export class PerfilPostulanteComponent {
   public fotoEditable: boolean = false;
   public userId: any = '';
+  public postulacionId: any = '';
   public postulanteResidencia: Ciudad = {} as Ciudad;
   public postulante: Postulante = {} as Postulante;
   public experiencias: Experiencia[] = [];
@@ -58,31 +42,23 @@ export class MiPerfilComponent implements OnInit {
   };
   @ViewChild('fileInput') fileInput!: ElementRef;
 
-  // Modales
-  public isModalModificarOpen = false;
-  public isModalDatosOpen = false;
-  public isModificarDescripcionOpen = false;
-  public isModificarExperiencianOpen = false;
-  public isModificarEstudiosOpen = false;
-  public isModificarHabilidadesOpen = false;
-  public isEliminarUsuarioOpen = false;
-
   constructor(
     private _postulanteService: PostulanteService,
+    private _postulacionesService: PostulacionesService,
     private _ciudadService: CiudadService,
     private _userService: UserService,
-    private router: Router
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.userId = localStorage.getItem('userId')!;
+    this.userId = this.route.snapshot.paramMap.get('postulanteId');
+    this.postulacionId = this.route.snapshot.paramMap.get('postulacion');
+
     this._userService.getUserGrupo(this.userId).subscribe((res: any) => {
       this.email = res.Email;
     });
     this.loadData();
   }
-
-  // GET INFO
 
   public loadData() {
     this._userService.getPersonaInfo(this.userId).subscribe((res: any) => {
@@ -170,64 +146,19 @@ export class MiPerfilComponent implements OnInit {
     this.fileInput.nativeElement.click();
   }
 
-  // MODALES
-
-  public abrirModalModificarNombre() {
-    this.isModalModificarOpen = true;
+  public aprobarPostulante() {
+    const postulacion = {
+      id: this.postulacionId,
+      EstadoId: 2,
+    };
+    this._postulacionesService.aprobarPostulante(postulacion).subscribe();
   }
 
-  public abrirModalModificarDatos() {
-    this.isModalDatosOpen = true;
-  }
-
-  public abrirModificarDescripcion() {
-    this.isModificarDescripcionOpen = true;
-  }
-  public abrirModificarExperiencia() {
-    this.isModificarExperiencianOpen = true;
-  }
-
-  public abrirModificarFormacion() {
-    this.isModificarEstudiosOpen = true;
-  }
-
-  public abrirModificarHabilidades() {
-    this.isModificarHabilidadesOpen = true;
-  }
-
-  public cerrarModal() {
-    this.isModalModificarOpen = false;
-    this.isModalDatosOpen = false;
-    this.isModificarDescripcionOpen = false;
-    this.isModificarExperiencianOpen = false;
-    this.isModificarEstudiosOpen = false;
-    this.isModificarHabilidadesOpen = false;
-    this.isEliminarUsuarioOpen = false;
-    this.loadData();
-  }
-
-  public modificarNombreTitulo() {
-    this.cerrarModal();
-    this.loadData();
-  }
-
-  public cambiarClave() {
-    this.router.navigate(['/cambiar-clave']);
-  }
-
-  public eliminarCuenta() {
-    this.isEliminarUsuarioOpen = true;
-  }
-
-  public deleteExperiencia(experiencia: any) {
-    this._postulanteService.deleteExperiencia(experiencia.id).subscribe();
-  }
-
-  public deleteFormacion(formacion: any) {
-    this._postulanteService.deleteFormacion(formacion.id).subscribe();
-  }
-
-  public deleteHabilidad(habilidad: any) {
-    this._postulanteService.deleteHabilidad(habilidad.id).subscribe();
+  public rechazarPostulante() {
+    const postulacion = {
+      id: this.postulacionId,
+      EstadoId: 3,
+    };
+    this._postulacionesService.rechazarPostulante(postulacion).subscribe();
   }
 }

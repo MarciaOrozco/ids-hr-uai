@@ -1,0 +1,41 @@
+<div class="container">
+  <div *ngFor="let empleo of filteredEmpleos" class="card-container">
+    <div class="header">
+      <div class="job-title">{{ empleo.Titulo }}</div>
+      <div class="info-header">
+        {{ empleo.Remoto ? "Remoto" : "Presencial" }}
+      </div>
+    </div>
+
+    <div class="descripcion-container">{{ empleo.Descripcion }}</div>
+    <div class="info-ciudad">{{ empleo.Ciudad.Nombre }}</div>
+    <div class="footer-container">
+      <div class="skills-container">
+        <p class="skills">Skills:</p>
+        <div *ngFor="let habilidad of empleo.habilidades" class="lista-skills">
+          {{ habilidad.TipoHabilidad.Tipo }}
+        </div>
+      </div>
+      <div class="button-container">
+        @if(!isPostulante){
+        <button
+          class="postulantes-button"
+          (click)="navegarPostulaciones(empleo.id)"
+        >
+          Ver postulaciones
+        </button>
+        }
+        <button
+          class="apply-button"
+          (click)="
+            isPostulante
+              ? verDetalleEmpleo(empleo.id)
+              : modificarEmpleo(empleo.id)
+          "
+        >
+          {{ isPostulante ? "Aplicar ahora" : "Modificar empleo" }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

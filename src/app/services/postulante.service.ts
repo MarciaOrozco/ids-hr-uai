@@ -88,4 +88,23 @@ export class PostulanteService {
       `${this.myAppUrl}postulantes/deleteHabilidad/` + habilidadId
     );
   }
+
+  public eliminarPostulante(userId: any): Observable<any> {
+    return this.http.delete(
+      `${this.myAppUrl}postulantes/eliminar-usuario/` + userId
+    );
+  }
+
+  public aplicarEmpleo(postulacion: Experiencia): Observable<any> {
+    return this.http.post(
+      `${this.myAppUrl}postulantes/postularse`,
+      postulacion
+    );
+  }
+
+  public getPostulacion(empleoId: any, postulanteId: any): Observable<any> {
+    return this.http.get(
+      `${this.myAppUrl}postulantes/get-postulacion?empleoId=${empleoId}&postulanteId=${postulanteId}`
+    );
+  }
 }

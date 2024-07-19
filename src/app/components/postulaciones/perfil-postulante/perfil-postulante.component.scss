@@ -49,8 +49,22 @@
   align-items: self-start;
 }
 
-.cambiar-clave-container,
+.cambiar-clave-container {
+  background-color: #79c372;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  width: 245px;
+  height: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
 .eliminar-cuenta-container {
+  background-color: #ff5652;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
   width: 245px;
   height: 15px;
   text-align: center;
@@ -125,14 +139,10 @@
 
 .cambiar-clave,
 .eliminar-cuenta {
-  color: #ff5652;
-  font-size: 15px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.cambiar-clave {
   text-decoration: none;
+  font-size: 15px;
+  text-transform: uppercase;
+  margin: 0;
 }
 
 .editar-pen {
