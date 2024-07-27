@@ -7,15 +7,16 @@ import {
 } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { NgIf } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-forgotten-pass',
+  selector: 'app-olvido-clave',
   standalone: true,
   imports: [ReactiveFormsModule, NgIf],
-  templateUrl: './forgotten-pass.component.html',
-  styleUrls: ['./forgotten-pass.component.scss'],
+  templateUrl: './olvido-clave.component.html',
+  styleUrls: ['./olvido-clave.component.scss'],
 })
-export class ForgottenPassComponent {
+export class OlvidoClaveComponent {
   recoveyPasswordForm = new FormGroup({
     mail: new FormControl('', [Validators.required, Validators.email]),
   });
@@ -23,7 +24,7 @@ export class ForgottenPassComponent {
   errorMessage: string | null = null;
   successMessage: string | null = null;
 
-  constructor(private _userService: UserService) {}
+  constructor(private _userService: UserService, private router: Router) {}
 
   onSubmit() {
     if (this.recoveyPasswordForm.invalid) {
@@ -45,5 +46,9 @@ export class ForgottenPassComponent {
         this.successMessage = null;
       },
     });
+  }
+
+  public cambiarClave() {
+    this.router.navigate(['/cambiar-clave-olvido']);
   }
 }

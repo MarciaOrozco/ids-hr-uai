@@ -1,22 +1,28 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
   registerForm = new FormGroup({
-    email: new FormControl(''),
-    nombre: new FormControl(''),
-    apellido: new FormControl(''),
-    clave: new FormControl(''),
-    repetirclave: new FormControl(''),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    nombre: new FormControl('', Validators.required),
+    apellido: new FormControl('', Validators.required),
+    clave: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    repetirclave: new FormControl('', Validators.required),
   });
 
   constructor(private _userService: UserService, private router: Router) {}
@@ -24,14 +30,15 @@ export class RegisterComponent {
   ngOnInit(): void {}
 
   register() {
-    const clave = this.registerForm.get('clave')?.value;
-    const confirmarClave = this.registerForm.get('repetirclave')?.value;
-
     if (this.registerForm.invalid) {
       return;
     }
 
-    if (clave != confirmarClave) {
+    const clave = this.registerForm.get('clave')?.value;
+    const confirmarClave = this.registerForm.get('repetirclave')?.value;
+
+    if (clave !== confirmarClave) {
+      this.registerForm.get('repetirclave')?.setErrors({ mismatch: true });
       return;
     }
 
@@ -47,12 +54,8 @@ export class RegisterComponent {
         this.router.navigate(['/login']);
       },
       error: (err: any) => {
-        console.error('Error en el login:', err);
-        if (err.status === 400 && err.error.msg === 'Password Incorrecta') {
-          this.registerForm.get('clave')?.setErrors({ incorrect: true });
-        } else {
-          alert('Login fallido. Por favor, revisa tus credenciales.');
-        }
+        console.error('Error en el registro:', err);
+        alert('Registro fallido. Por favor, revisa tus credenciales.');
       },
     });
   }

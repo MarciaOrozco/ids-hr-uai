@@ -17,6 +17,12 @@ export class PostulacionesService {
     );
   }
 
+  public getPostulacionDePostulante(postulanteId: any): Observable<any> {
+    return this.http.get(
+      `${this.myAppUrl}postulaciones/get-postulacion-postulante/` + postulanteId
+    );
+  }
+
   public aprobarPostulante(postulacion: any): Observable<any> {
     return this.http.patch(
       `${this.myAppUrl}postulaciones/aprobar-postulado/` + postulacion.id,
@@ -28,6 +34,12 @@ export class PostulacionesService {
     return this.http.patch(
       `${this.myAppUrl}postulaciones/rechazar-postulado/` + postulacion.id,
       postulacion
+    );
+  }
+
+  public eliminarPostulacion(postulacionId: any): Observable<any> {
+    return this.http.delete(
+      `${this.myAppUrl}postulaciones/eliminar-postulacion/` + postulacionId
     );
   }
 }

@@ -16,6 +16,10 @@ export class CrearEmpleadoService {
     return this.http.get(`${this.myAppUrl}empleados/listaEmpleados`);
   }
 
+  public getEmpleadoId(userId: string): Observable<any> {
+    return this.http.get(`${this.myAppUrl}empleados/get-empleado-id/` + userId);
+  }
+
   public verEmpleado(empleadoId: any): Observable<any> {
     return this.http.get(
       `${this.myAppUrl}empleados/get-empleado/` + empleadoId

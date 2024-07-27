@@ -1,0 +1,50 @@
+<div class="empleados-container">
+  <div class="card-container">
+    <div class="first-container">
+      <div class="foto-container container">
+        @if (user.img) {
+        <img [src]="user.img" alt="User Image" (click)="triggerFileInput()" />
+        } @else {
+        <div class="placeholder" (click)="triggerFileInput()">No image</div>
+        }
+        <input
+          type="file"
+          #fileInput
+          (change)="onFileSelected($event)"
+          style="display: none"
+        />
+      </div>
+      <div class="datos-container">
+        <div class="label">Nombre:</div>
+        <div class="dato">{{ nombre }} {{ apellido }}</div>
+        <div class="label">Email:</div>
+        <div class="dato">{{ email }}</div>
+      </div>
+    </div>
+
+    <div class="botones-container">
+      <button class="modificar-button clave" (click)="modificarClave()">
+        Modificar clave
+      </button>
+      <button class="modificar-button" (click)="abrirModalModificar()">
+        Modificar
+      </button>
+      <button class="eliminar-button" (click)="abrirModal()">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+@if (isModalOpen){<app-eliminar-empleado-modal
+  [empleadoId]="empleadoId"
+  (closeModalEvent)="cerrarModal()"
+  (confirmDeleteEvent)="eliminarEmpleado()"
+>
+</app-eliminar-empleado-modal>
+
+} @if (isModalModificarOpen){<app-modificar-empleado-modal
+  [empleadoId]="empleadoId"
+  (closeModalEvent)="cerrarModal()"
+  (confirmModifyEvent)="modificarEmpleado()"
+>
+</app-modificar-empleado-modal>
+}

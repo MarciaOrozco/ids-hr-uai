@@ -11,6 +11,8 @@ import { NgIf } from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
   public isPostulante: boolean = false;
+  public isAdmin: boolean = false;
+  public isEmpleado: boolean = false;
   public loggedIn: boolean = false;
 
   constructor(private _userService: UserService) {}
@@ -23,8 +25,10 @@ export class NavbarComponent implements OnInit {
     this._userService.userGroup$.subscribe((res: any) => {
       if (res && res.Grupo && res.Grupo.Nombre === 'Postulante') {
         this.isPostulante = true;
+      } else if (res && res.Grupo && res.Grupo.Nombre === 'Admin') {
+        this.isAdmin = true;
       } else {
-        this.isPostulante = false;
+        this.isEmpleado = true;
       }
     });
   }

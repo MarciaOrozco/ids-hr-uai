@@ -8,7 +8,7 @@ import {
   Postulante,
 } from '../../interfaces/postulante';
 import { Ciudad } from '../../interfaces/ciudad';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Subject } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { DatePipe, NgFor } from '@angular/common';
 import { UserService } from '../../services/user.service';
@@ -67,6 +67,8 @@ export class MiPerfilComponent implements OnInit {
   public isModificarHabilidadesOpen = false;
   public isEliminarUsuarioOpen = false;
 
+  private updateData$ = new Subject<void>();
+
   constructor(
     private _postulanteService: PostulanteService,
     private _ciudadService: CiudadService,
@@ -79,44 +81,51 @@ export class MiPerfilComponent implements OnInit {
     this._userService.getUserGrupo(this.userId).subscribe((res: any) => {
       this.email = res.Email;
     });
-    this.loadData();
+    this.updateData$.pipe(switchMap(() => this.loadData())).subscribe();
+    this.updateData$.next();
   }
 
-  // GET INFO
-
   public loadData() {
-    this._userService.getPersonaInfo(this.userId).subscribe((res: any) => {
-      this.nombre = res.Nombre;
-      this.apellido = res.Apellido;
-    });
-
-    this._postulanteService
-      .getPostulante(this.userId)
-      .pipe(
-        tap((postulante) => (this.postulante = postulante)),
-        switchMap((postulante) =>
-          forkJoin({
-            ciudad: this._ciudadService.getCiudad(postulante.CiudadId),
-            experiencias: this._postulanteService.getExperiencias(
-              postulante.id
-            ),
-            formaciones: this._postulanteService.getFormaciones(postulante.id),
-            habilidades: this._postulanteService.getHabilidades(postulante.id),
+    return this._userService.getPersonaInfo(this.userId).pipe(
+      tap((res: any) => {
+        this.nombre = res.Nombre;
+        this.apellido = res.Apellido;
+      }),
+      switchMap(() =>
+        this._postulanteService.getPostulante(this.userId).pipe(
+          tap((postulante) => (this.postulante = postulante)),
+          switchMap((postulante) =>
+            forkJoin({
+              ciudad: this._ciudadService.getCiudad(postulante.CiudadId),
+              experiencias: this._postulanteService.getExperiencias(
+                postulante.id
+              ),
+              formaciones: this._postulanteService.getFormaciones(
+                postulante.id
+              ),
+              habilidades: this._postulanteService.getHabilidades(
+                postulante.id
+              ),
+            })
+          ),
+          tap((results) => {
+            this.postulanteResidencia = results.ciudad;
+            this.experiencias = results.experiencias;
+            this.habilidades = results.habilidades;
+            this.formacionesHelper(results.formaciones);
           })
-        ),
-        tap((results) => {
-          this.postulanteResidencia = results.ciudad;
-          this.experiencias = results.experiencias;
-          this.habilidades = results.habilidades;
-          this.formacionesHelper(results.formaciones);
-        })
+        )
       )
-      .subscribe({
-        error: (err) => console.error('Error fetching data', err),
-      });
+    );
   }
 
   public formacionesHelper(formaciones: Formacion[]) {
+    this.cursos = [];
+    this.universidades = [];
+    this.secundaria = [];
+    this.maestria = [];
+    this.otros = [];
+
     formaciones.forEach((formacion: Formacion) => {
       switch (formacion.TipoFormacion.Tipo) {
         case 'Curso':
@@ -183,6 +192,7 @@ export class MiPerfilComponent implements OnInit {
   public abrirModificarDescripcion() {
     this.isModificarDescripcionOpen = true;
   }
+
   public abrirModificarExperiencia() {
     this.isModificarExperiencianOpen = true;
   }
@@ -203,12 +213,33 @@ export class MiPerfilComponent implements OnInit {
     this.isModificarEstudiosOpen = false;
     this.isModificarHabilidadesOpen = false;
     this.isEliminarUsuarioOpen = false;
-    this.loadData();
+    this.updateData$.next();
   }
 
   public modificarNombreTitulo() {
     this.cerrarModal();
-    this.loadData();
+    this.updateData$.next();
+  }
+
+  public deleteExperiencia(experiencia: any) {
+    this._postulanteService
+      .deleteExperiencia(experiencia.id)
+      .pipe(tap(() => this.updateData$.next()))
+      .subscribe();
+  }
+
+  public deleteFormacion(formacion: any) {
+    this._postulanteService
+      .deleteFormacion(formacion.id)
+      .pipe(tap(() => this.updateData$.next()))
+      .subscribe();
+  }
+
+  public deleteHabilidad(habilidad: any) {
+    this._postulanteService
+      .deleteHabilidad(habilidad.id)
+      .pipe(tap(() => this.updateData$.next()))
+      .subscribe();
   }
 
   public cambiarClave() {
@@ -217,17 +248,5 @@ export class MiPerfilComponent implements OnInit {
 
   public eliminarCuenta() {
     this.isEliminarUsuarioOpen = true;
-  }
-
-  public deleteExperiencia(experiencia: any) {
-    this._postulanteService.deleteExperiencia(experiencia.id).subscribe();
-  }
-
-  public deleteFormacion(formacion: any) {
-    this._postulanteService.deleteFormacion(formacion.id).subscribe();
-  }
-
-  public deleteHabilidad(habilidad: any) {
-    this._postulanteService.deleteHabilidad(habilidad.id).subscribe();
   }
 }

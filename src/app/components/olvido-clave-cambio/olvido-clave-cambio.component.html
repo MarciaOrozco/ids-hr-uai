@@ -1,0 +1,41 @@
+<div class="left-item">
+  <h2 class="left-item-title">Cambiar Clave</h2>
+  <p class="left-item-subtitle">
+    Ingresa el código de recuperación recibido en tu correo electrónico, junto
+    con la nueva contraseña.
+  </p>
+  <form
+    [formGroup]="cambiarClaveForm"
+    class="form-content"
+    (ngSubmit)="onSubmit()"
+  >
+    <input
+      id="mail"
+      type="email"
+      formControlName="mail"
+      class="form-input"
+      placeholder="Email"
+    />
+    <input
+      id="codigo"
+      type="text"
+      formControlName="codigo"
+      class="form-input"
+      placeholder="Código de recuperación"
+    />
+    <input
+      id="nuevaClave"
+      type="password"
+      formControlName="nuevaClave"
+      class="form-input"
+      placeholder="Nueva Contraseña"
+    />
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
+    <div class="form-group">
+      <button type="submit" class="login-button">Actualizar Contraseña</button>
+    </div>
+  </form>
+</div>

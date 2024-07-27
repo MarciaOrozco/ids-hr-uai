@@ -1,1 +1,56 @@
-<p>mis-postulaciones works!</p>
+<div class="card-container">
+  <div class="container">
+    <div class="header">
+      <div class="job-title">Postulaciones</div>
+    </div>
+    @if (postulaciones.length > 0) {
+    <table>
+      <thead>
+        <tr>
+          <th>Id postulacion</th>
+          <th>Empleo</th>
+          <th>Ver empleo</th>
+          <th>Estado Postulacion</th>
+          <th>Estado Empleo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (postulacion of postulaciones; track postulacion.id) {
+        <tr>
+          <td>{{ postulacion.id }}</td>
+          <td>{{ postulacion.Empleo.Titulo }}</td>
+          <td
+            (click)="navegarEmpleoDetalle(postulacion.Empleo.id)"
+            class="link"
+          >
+            Ver empleo
+          </td>
+          <td>{{ postulacion.Estado.Estado }}</td>
+          <td>{{ postulacion.Empleo.Activo ? "Activo" : "Cerrado" }}</td>
+          <td>
+            <button
+              class="apply-button"
+              (click)="cancelarPostulacion(postulacion.id)"
+              [disabled]="
+                postulacion.Estado.Estado === 'Rechazado' ||
+                !postulacion.Empleo.Activo
+              "
+              [ngClass]="{
+                'disabled-button':
+                  postulacion.Estado.Estado === 'Rechazado' ||
+                  !postulacion.Empleo.Activo
+              }"
+            >
+              Cancelar mi postulacion
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    } @else {
+    <div>No hay postulaciones activas</div>
+    }
+  </div>
+</div>

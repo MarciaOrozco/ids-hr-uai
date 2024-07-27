@@ -29,14 +29,13 @@
   flex-direction: column;
   width: 460px;
   max-height: 560px;
-  padding: 15px;
+  padding: 40px 15px 15px 15px;
   border-radius: 30px;
   background-color: #fff;
   box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.2509803922);
 }
 
 .botones-container {
-  padding-top: 10px;
   display: flex;
   flex-direction: row;
   gap: 5px;
@@ -46,7 +45,7 @@
 .modificar-button {
   background-color: #4540db;
   width: 102px;
-  height: 40px;
+  height: 50px;
   color: #fff;
   border-radius: 8px;
   border: none;
@@ -115,4 +114,14 @@
   &::placeholder {
     color: #a7a3ff;
   }
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 17px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
 }

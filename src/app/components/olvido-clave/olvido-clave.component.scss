@@ -33,10 +33,10 @@ img {
   }
 }
 
-.login-button {
+.primary-button {
   background-color: #4d47c3;
-  width: 369px;
-  height: 59px;
+  width: 328px;
+  height: 50px;
   color: #fff;
   border-radius: 8px;
   border: none;
@@ -46,6 +46,32 @@ img {
   &:focus,
   &:active {
     outline: none;
+  }
+
+  &:disabled {
+    background-color: #a7a3ff;
+    cursor: not-allowed;
+  }
+}
+
+.secondary-button {
+  background-color: #79c372;
+  width: 328px;
+  height: 50px;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 4px 10px rgb(77 71 195 / 72%);
+  font-family: "Montserrat", sans-serif;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: #a7a3ff;
+    cursor: not-allowed;
   }
 }
 
@@ -88,4 +114,10 @@ img {
     font-size: 16px;
     font-family: "Montserrat", sans-serif;
   }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

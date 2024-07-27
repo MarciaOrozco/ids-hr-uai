@@ -12,6 +12,19 @@
       class="form-input"
       placeholder="Email"
     />
+    <div
+      *ngIf="
+        registerEmpleadoForm.get('email')?.invalid &&
+        registerEmpleadoForm.get('email')?.touched
+      "
+    >
+      <small *ngIf="registerEmpleadoForm.get('email')?.errors?.['required']"
+        >El email es obligatorio.</small
+      >
+      <small *ngIf="registerEmpleadoForm.get('email')?.errors?.['email']"
+        >El email no es válido.</small
+      >
+    </div>
 
     <input
       id="nombre"
@@ -20,6 +33,16 @@
       class="form-input"
       placeholder="Nombre"
     />
+    <div
+      *ngIf="
+        registerEmpleadoForm.get('nombre')?.invalid &&
+        registerEmpleadoForm.get('nombre')?.touched
+      "
+    >
+      <small *ngIf="registerEmpleadoForm.get('nombre')?.errors?.['required']"
+        >El nombre es obligatorio.</small
+      >
+    </div>
 
     <input
       id="apellido"
@@ -28,6 +51,16 @@
       class="form-input"
       placeholder="Apellido"
     />
+    <div
+      *ngIf="
+        registerEmpleadoForm.get('apellido')?.invalid &&
+        registerEmpleadoForm.get('apellido')?.touched
+      "
+    >
+      <small *ngIf="registerEmpleadoForm.get('apellido')?.errors?.['required']"
+        >El apellido es obligatorio.</small
+      >
+    </div>
 
     <input
       id="clave"
@@ -36,6 +69,19 @@
       class="form-input"
       placeholder="Clave temporal"
     />
+    <div
+      *ngIf="
+        registerEmpleadoForm.get('clave')?.invalid &&
+        registerEmpleadoForm.get('clave')?.touched
+      "
+    >
+      <small *ngIf="registerEmpleadoForm.get('clave')?.errors?.['required']"
+        >La clave es obligatoria.</small
+      >
+      <small *ngIf="registerEmpleadoForm.get('clave')?.errors?.['minlength']"
+        >La clave debe tener al menos 6 caracteres.</small
+      >
+    </div>
 
     <input
       id="repetirclave"
@@ -44,10 +90,28 @@
       class="form-input"
       placeholder="Confirmar clave temporal"
     />
+    <div
+      *ngIf="
+        registerEmpleadoForm.get('repetirclave')?.invalid &&
+        registerEmpleadoForm.get('repetirclave')?.touched
+      "
+    >
+      <small
+        *ngIf="registerEmpleadoForm.get('repetirclave')?.errors?.['required']"
+        >Confirmar clave es obligatorio.</small
+      >
+    </div>
+    <div *ngIf="registerEmpleadoForm.hasError('claveMismatch')">
+      <small>Las claves no coinciden.</small>
+    </div>
 
     <div class="form-group">
-      <button class="login-button">Crear empleado</button>
-      <button class="cancelar-button">Cancelar</button>
+      <button class="login-button" [disabled]="registerEmpleadoForm.invalid">
+        Crear empleado
+      </button>
+      <button class="cancelar-button" type="button" (click)="cancelar()">
+        Cancelar
+      </button>
     </div>
   </form>
 </div>

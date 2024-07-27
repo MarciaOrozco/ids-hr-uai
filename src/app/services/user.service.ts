@@ -60,7 +60,10 @@ export class UserService {
   }
 
   public sendRecoveryEmail(email: any): Observable<void> {
-    return this.http.post<void>(`${this.myAppUrl}/recover-password`, { email });
+    return this.http.post<void>(
+      `${this.myAppUrl}${this.myApiUrl}/olvido-clave`,
+      { email }
+    );
   }
 
   public getUserGrupo(userId: any): Observable<Object> {
@@ -103,5 +106,16 @@ export class UserService {
       claveAnterior,
       nuevaClave,
     });
+  }
+
+  public validarCodigo(
+    email: any,
+    code: any,
+    nuevaClave: any
+  ): Observable<void> {
+    return this.http.post<void>(
+      `${this.myAppUrl}${this.myApiUrl}/validar-codigo`,
+      { email, code, nuevaClave }
+    );
   }
 }

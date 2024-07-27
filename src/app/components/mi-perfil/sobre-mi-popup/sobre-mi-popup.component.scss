@@ -46,7 +46,7 @@
   flex-direction: column;
   width: 600px;
   max-height: 560px;
-  padding: 15px;
+  padding: 30px 30px 15px 30px;
   border-radius: 30px;
   background-color: #fff;
   box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.2509803922);
@@ -90,4 +90,14 @@ label {
 
 .cancelar-button {
   background-color: #ff5652;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 17px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
 }
