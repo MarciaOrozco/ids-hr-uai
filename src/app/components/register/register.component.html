@@ -8,6 +8,19 @@
       class="form-input"
       placeholder="Email"
     />
+    <div
+      *ngIf="
+        registerForm.get('email')?.touched && registerForm.get('email')?.invalid
+      "
+      class="error-message"
+    >
+      <div *ngIf="registerForm.get('email')?.errors?.['required']">
+        Email es requerido.
+      </div>
+      <div *ngIf="registerForm.get('email')?.errors?.['email']">
+        Email no es válido.
+      </div>
+    </div>
 
     <input
       id="nombre"
@@ -16,6 +29,15 @@
       class="form-input"
       placeholder="Nombre"
     />
+    <div
+      *ngIf="
+        registerForm.get('nombre')?.touched &&
+        registerForm.get('nombre')?.invalid
+      "
+      class="error-message"
+    >
+      Nombre es requerido.
+    </div>
 
     <input
       id="apellido"
@@ -24,6 +46,15 @@
       class="form-input"
       placeholder="Apellido"
     />
+    <div
+      *ngIf="
+        registerForm.get('apellido')?.touched &&
+        registerForm.get('apellido')?.invalid
+      "
+      class="error-message"
+    >
+      Apellido es requerido.
+    </div>
 
     <input
       id="clave"
@@ -32,6 +63,19 @@
       class="form-input"
       placeholder="Clave"
     />
+    <div
+      *ngIf="
+        registerForm.get('clave')?.touched && registerForm.get('clave')?.invalid
+      "
+      class="error-message"
+    >
+      <div *ngIf="registerForm.get('clave')?.errors?.['required']">
+        Clave es requerida.
+      </div>
+      <div *ngIf="registerForm.get('clave')?.errors?.['minlength']">
+        Clave debe tener al menos 6 caracteres.
+      </div>
+    </div>
 
     <input
       id="repetirclave"
@@ -40,9 +84,25 @@
       class="form-input"
       placeholder="Confirmar clave"
     />
+    <div
+      *ngIf="
+        registerForm.get('repetirclave')?.touched &&
+        registerForm.get('repetirclave')?.invalid
+      "
+      class="error-message"
+    >
+      <div *ngIf="registerForm.get('repetirclave')?.errors?.['required']">
+        Confirmar clave es requerida.
+      </div>
+      <div *ngIf="registerForm.get('repetirclave')?.errors?.['mismatch']">
+        Las claves no coinciden.
+      </div>
+    </div>
 
     <div class="form-group">
-      <button class="login-button">Registrarse</button>
+      <button class="login-button" [disabled]="registerForm.invalid">
+        Registrarse
+      </button>
     </div>
   </form>
 </div>

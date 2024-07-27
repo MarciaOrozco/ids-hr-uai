@@ -53,7 +53,7 @@ export class ExperienciasPopupComponent implements OnInit {
       FechaFin: this.modifyExperienciasForm.value.fechaFin,
       FechaInicio: this.modifyExperienciasForm.value.fechaInicio,
       NombreEmpresa: this.modifyExperienciasForm.value.nombreEmpresa,
-      Presente: this.modifyExperienciasForm.value.presente,
+      Presente: this.modifyExperienciasForm.value.presente ? true : false,
       Puesto: this.modifyExperienciasForm.value.puesto,
     };
 

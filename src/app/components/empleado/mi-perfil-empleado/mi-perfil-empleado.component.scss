@@ -1,0 +1,94 @@
+.foto-container {
+  width: 130px;
+}
+
+.placeholder {
+  width: 100px;
+  height: 100px;
+  background-color: #e2e2e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+  color: #000000;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  max-height: 532px;
+  padding: 15px;
+  border-radius: 30px;
+  background-color: #f0efff;
+  box-shadow: 0px 4px 4px 3px rgba(0, 0, 0, 0.2509803922);
+}
+
+.first-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.eliminar-button {
+  align-self: self-end;
+}
+
+.eliminar-button {
+  background-color: #ff5652;
+  width: 102px;
+  height: 40px;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+.modificar-button {
+  background-color: #7eb1eb;
+  width: 102px;
+  height: 40px;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+.clave {
+  width: 140px;
+  background-color: #79c372;
+}
+
+.label {
+  color: #4540db;
+  font-weight: bold;
+  padding-bottom: 8px;
+}
+
+.dato {
+  padding-bottom: 8px;
+}
+
+.empleados-container {
+  padding: 40px 0px 40px 0px;
+  display: flex;
+  justify-content: center;
+}
+
+.botones-container {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: space-around;
+}

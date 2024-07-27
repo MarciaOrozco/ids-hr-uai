@@ -1,6 +1,7 @@
 <div class="modal-overlay" (click)="closeModal()"></div>
 <div class="form-container">
   <div class="card-container">
+    <div class="close-button" (click)="closeModal()">&#x2715;</div>
     <div class="first-container">
       <div class="datos-container">
         <form
@@ -8,7 +9,7 @@
           class="form-content"
           (ngSubmit)="modificarDatos()"
         >
-          <label for="numero"> Celular</label>
+          <label for="numero">Celular</label>
           <input
             id="numero"
             type="text"
@@ -16,7 +17,7 @@
             class="form-input"
           />
 
-          <label for="fechaNacimiento"> Fecha de Nacimiento</label>
+          <label for="fechaNacimiento">Fecha de Nacimiento</label>
           <input
             type="date"
             id="fechaNacimiento"
@@ -25,9 +26,9 @@
             class="form-input"
           />
 
-          @if (ciudadSeleccionada){
+          @if (ciudadSeleccionada) {
           <div class="residencia-container">
-            <label for="provincia">Residencia </label>
+            <label for="provincia">Residencia</label>
             <div class="editar-pen-container">
               <img
                 src="/assets/pen.svg"
@@ -54,7 +55,7 @@
             </option>
           </select>
 
-          @if (paisSeleccionado){
+          @if (paisSeleccionado) {
           <label for="provincia">Provincia</label>
           <select id="provincia" (change)="onProvinciaChange($event)">
             <option value="">Elegir Provincia</option>

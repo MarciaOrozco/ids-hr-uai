@@ -21,7 +21,13 @@
       {{ successMessage }}
     </div>
     <div class="form-group">
-      <button type="submit" class="login-button">Continuar</button>
+      @if(successMessage){
+      <button type="submit" class="secondary-button" (click)="cambiarClave()">
+        Cambiar contraseña
+      </button>
+      } @else {
+      <button type="submit" class="primary-button">Continuar</button>
+      }
     </div>
   </form>
 </div>

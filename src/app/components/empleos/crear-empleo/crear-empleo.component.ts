@@ -159,4 +159,8 @@ export class CrearEmpleoComponent {
       this._empleosService.agregarHabilidad(habilidad).subscribe();
     });
   }
+
+  public cancelar() {
+    this.router.navigate(['/trabajos']);
+  }
 }

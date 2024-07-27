@@ -28,7 +28,7 @@ export class CiudadService {
     );
   }
 
-  getCiudad(ciudadId: any): Observable<any> {
+  public getCiudad(ciudadId: any): Observable<any> {
     return this.http.get(`${this.myAppUrl}residencia/getCiudad/` + ciudadId);
   }
 }

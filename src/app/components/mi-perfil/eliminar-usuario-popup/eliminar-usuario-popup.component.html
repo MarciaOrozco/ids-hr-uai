@@ -1,7 +1,10 @@
 <div class="modal-overlay" (click)="closeModal()"></div>
 <div class="form-container">
   <div class="card-container">
-    Desea eliminar definitivamente su usuario? Esta accion es irreversible.
+    <div class="close-button" (click)="closeModal()">&#x2715;</div>
+    <span class="text">
+      Desea eliminar definitivamente su usuario? Esta accion es irreversible.
+    </span>
 
     <div class="botones-container">
       <button class="modificar-button" (click)="eliminarUsuario()">
