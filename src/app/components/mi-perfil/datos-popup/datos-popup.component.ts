@@ -8,7 +8,7 @@ import { NgFor, NgIf } from '@angular/common';
 @Component({
   selector: 'app-datos-popup',
   standalone: true,
-  imports: [ReactiveFormsModule, NgFor, NgIf],
+  imports: [ReactiveFormsModule, NgFor],
   templateUrl: './datos-popup.component.html',
   styleUrl: './datos-popup.component.scss',
 })

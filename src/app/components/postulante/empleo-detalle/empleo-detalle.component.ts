@@ -9,7 +9,7 @@ import { PostulanteService } from '../../../services/postulante.service';
 @Component({
   selector: 'app-empleo-detalle',
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [NgFor],
   templateUrl: './empleo-detalle.component.html',
   styleUrl: './empleo-detalle.component.scss',
 })
