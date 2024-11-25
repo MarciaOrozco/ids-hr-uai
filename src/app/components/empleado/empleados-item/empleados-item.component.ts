@@ -4,6 +4,7 @@ import { CrearEmpleadoService } from '../../../services/crear-empleado.service';
 import { NgFor } from '@angular/common';
 import { Empleado } from '../../../interfaces/empleado';
 import { ModificarEmpleadoModalComponent } from '../modificar-empleado-modal/modificar-empleado-modal.component';
+import { ModificarRoleComponent } from '../modificar-role/modificar-role.component';
 
 @Component({
   selector: 'app-empleados-item',
@@ -12,6 +13,7 @@ import { ModificarEmpleadoModalComponent } from '../modificar-empleado-modal/mod
     EliminarEmpleadoModalComponent,
     NgFor,
     ModificarEmpleadoModalComponent,
+    ModificarRoleComponent,
   ],
   templateUrl: './empleados-item.component.html',
   styleUrl: './empleados-item.component.scss',
@@ -21,6 +23,7 @@ export class EmpleadosItemComponent implements OnInit {
   public selectedEmpleadoId: any = null;
   public isModalOpen = false;
   public isModalModificarOpen = false;
+  public isModalModificarRoleOpen = false;
 
   constructor(private _empleadosService: CrearEmpleadoService) {}
 
@@ -65,10 +68,16 @@ export class EmpleadosItemComponent implements OnInit {
     this.isModalModificarOpen = true;
   }
 
+  abrirModalModificarRol(id: number) {
+    this.selectedEmpleadoId = id;
+    this.isModalModificarRoleOpen = true;
+  }
+
   cerrarModal() {
     this.isModalOpen = false;
     this.isModalModificarOpen = false;
     this.selectedEmpleadoId = null;
+    this.isModalModificarRoleOpen = false;
   }
 
   eliminarEmpleado() {
@@ -79,5 +88,14 @@ export class EmpleadosItemComponent implements OnInit {
   modificarEmpleado() {
     this.cerrarModal();
     this.cargarEmpleados();
+  }
+
+  getRolName(grupoId: number): string {
+    const rolesMap: any = {
+      1: 'Postulante',
+      2: 'Empleado',
+      3: 'Administrador',
+    };
+    return rolesMap[grupoId] || 'Desconocido';
   }
 }

@@ -42,4 +42,11 @@ export class CrearEmpleadoService {
       empleado
     );
   }
+
+  public modificarRolEmpleado(empleado: any): Observable<any> {
+    return this.http.patch(
+      `${this.myAppUrl}empleados/modificar-rol/${empleado.id}`,
+      empleado
+    );
+  }
 }

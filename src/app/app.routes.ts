@@ -24,6 +24,7 @@ import { PerfilPostulanteComponent } from './components/postulaciones/perfil-pos
 import { OlvidoClaveCambioComponent } from './components/olvido-clave-cambio/olvido-clave-cambio.component';
 import { MiPerfilEmpleadoComponent } from './components/empleado/mi-perfil-empleado/mi-perfil-empleado.component';
 
+
 export const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [noAuthGuard] },
   {

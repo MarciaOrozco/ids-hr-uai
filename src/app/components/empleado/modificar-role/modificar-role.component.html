@@ -1,0 +1,26 @@
+<div class="modal-overlay" (click)="closeModal()"></div>
+<div class="modal">
+  <div class="modal-header">
+    <h2 class="eliminar-empleado">
+      Cambiar Rol {{ empleado.Persona.Nombre }}
+      {{ empleado.Persona.Apellido }}
+    </h2>
+    <button class="close-button" (click)="closeModal()">×</button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="userRol" class="form-content">
+      <select id="rol" formControlName="rol">
+        <option value="">Elegir Rol</option>
+        <option value="Administrador">Administrador</option>
+        <option value="Empleado">Empleado</option>
+        <option value="Postulante">Postulante</option>
+      </select>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button (click)="closeModal()" class="atras-button">Atras</button>
+    <button (click)="confirmChangeRol()" class="cancelar-button">
+      Cambiar
+    </button>
+  </div>
+</div>
