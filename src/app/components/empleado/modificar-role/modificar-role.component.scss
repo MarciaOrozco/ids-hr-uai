@@ -1,0 +1,105 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 30px;
+  width: 450px;
+  height: 190px;
+  padding: 20px;
+  z-index: 1001;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+  padding-top: 15px;
+}
+
+.eliminar-empleado {
+  color: #6f68f7;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.cancelar-button {
+  background-color: #ff5652;
+  width: 102px;
+  height: 50px;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+.atras-button {
+  background-color: #4d47c3;
+  width: 102px;
+  height: 50px;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 4px 10px rgb(77 71 195 / 72%);
+  font-family: "Montserrat", sans-serif;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+.form-input,
+select {
+  background-color: #f0efff;
+  height: 50px;
+  width: 380px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  padding-left: 25px;
+  font-family: "Montserrat", sans-serif;
+  &::placeholder {
+    color: #6f68f7;
+  }
+}
+
+select {
+  width: 449px;
+  color: #6f68f7;
+  border-right: 10px solid transparent;
+}
+
+option {
+  color: #6f68f7;
+}

@@ -41,7 +41,7 @@ export const RoleEmpleadoGuard: CanActivateFn = (route, state) => {
 
   return userService.getUserGrupo(userId).pipe(
     map((res: any) => {
-      if (res.Grupo.Nombre === 'Empleado') {
+      if (res.Grupo.Nombre === 'Empleado' || res.Grupo.Nombre === 'Admin')  {
         return true;
       } else {
         router.navigate(['/unauthorized']);

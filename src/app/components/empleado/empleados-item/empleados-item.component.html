@@ -21,10 +21,20 @@
         </div>
         <div class="label">Email:</div>
         <div class="dato">{{ empleado.Persona.Usuario.email }}</div>
+        <div class="label">Rol:</div>
+        <div class="dato">
+          {{ getRolName(empleado.Persona.Usuario.GrupoId) }}
+        </div>
       </div>
     </div>
 
     <div class="botones-container">
+      <button
+        class="modificar-button"
+        (click)="abrirModalModificarRol(empleado.id)"
+      >
+        Cambiar Rol
+      </button>
       <button
         class="modificar-button"
         (click)="abrirModalModificar(empleado.id)"
@@ -51,4 +61,10 @@
   (confirmModifyEvent)="modificarEmpleado()"
 >
 </app-modificar-empleado-modal>
+} @if (isModalModificarRoleOpen){<app-modificar-role
+  [empleadoId]="selectedEmpleadoId"
+  (closeModalEvent)="cerrarModal()"
+  (confirmChangeEvent)="modificarEmpleado()"
+>
+</app-modificar-role>
 }
