@@ -10,11 +10,10 @@ import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-olvido-clave-cambio',
-  standalone: true,
-  imports: [NgIf, ReactiveFormsModule],
-  templateUrl: './olvido-clave-cambio.component.html',
-  styleUrl: './olvido-clave-cambio.component.scss',
+    selector: 'app-olvido-clave-cambio',
+    imports: [NgIf, ReactiveFormsModule],
+    templateUrl: './olvido-clave-cambio.component.html',
+    styleUrl: './olvido-clave-cambio.component.scss'
 })
 export class OlvidoClaveCambioComponent {
   cambiarClaveForm = new FormGroup({

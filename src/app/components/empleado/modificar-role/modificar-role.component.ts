@@ -3,11 +3,10 @@ import { CrearEmpleadoService } from '../../../services/crear-empleado.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-modificar-role',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './modificar-role.component.html',
-  styleUrl: './modificar-role.component.scss',
+    selector: 'app-modificar-role',
+    imports: [ReactiveFormsModule],
+    templateUrl: './modificar-role.component.html',
+    styleUrl: './modificar-role.component.scss'
 })
 export class ModificarRoleComponent {
   @Input() empleadoId: any = null;

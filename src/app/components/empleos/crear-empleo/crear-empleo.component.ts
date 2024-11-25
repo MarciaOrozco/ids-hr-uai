@@ -10,11 +10,10 @@ import { EmpleosService } from '../../../services/empleos.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-crear-empleo',
-  standalone: true,
-  imports: [ReactiveFormsModule, NgFor],
-  templateUrl: './crear-empleo.component.html',
-  styleUrl: './crear-empleo.component.scss',
+    selector: 'app-crear-empleo',
+    imports: [ReactiveFormsModule, NgFor],
+    templateUrl: './crear-empleo.component.html',
+    styleUrl: './crear-empleo.component.scss'
 })
 export class CrearEmpleoComponent {
   empleo = new FormGroup({

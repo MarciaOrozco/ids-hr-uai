@@ -22,21 +22,20 @@ import { Router } from '@angular/router';
 import { EliminarUsuarioPopupComponent } from './eliminar-usuario-popup/eliminar-usuario-popup.component';
 
 @Component({
-  selector: 'app-mi-perfil',
-  standalone: true,
-  imports: [
-    NgFor,
-    DatePipe,
-    NombrePopupComponent,
-    DatosPopupComponent,
-    SobreMiPopupComponent,
-    ExperienciasPopupComponent,
-    HabilidadesPopupComponent,
-    EstudiosPopupComponent,
-    EliminarUsuarioPopupComponent,
-  ],
-  templateUrl: './mi-perfil.component.html',
-  styleUrls: ['./mi-perfil.component.scss'],
+    selector: 'app-mi-perfil',
+    imports: [
+        NgFor,
+        DatePipe,
+        NombrePopupComponent,
+        DatosPopupComponent,
+        SobreMiPopupComponent,
+        ExperienciasPopupComponent,
+        HabilidadesPopupComponent,
+        EstudiosPopupComponent,
+        EliminarUsuarioPopupComponent,
+    ],
+    templateUrl: './mi-perfil.component.html',
+    styleUrls: ['./mi-perfil.component.scss']
 })
 export class MiPerfilComponent implements OnInit {
   public fotoEditable: boolean = false;

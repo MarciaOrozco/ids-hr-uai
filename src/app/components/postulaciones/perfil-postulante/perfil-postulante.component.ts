@@ -15,11 +15,10 @@ import { forkJoin, switchMap, tap } from 'rxjs';
 import { PostulacionesService } from '../../../services/postulaciones.service';
 
 @Component({
-  selector: 'app-perfil-postulante',
-  standalone: true,
-  imports: [NgFor, DatePipe],
-  templateUrl: './perfil-postulante.component.html',
-  styleUrl: './perfil-postulante.component.scss',
+    selector: 'app-perfil-postulante',
+    imports: [NgFor, DatePipe],
+    templateUrl: './perfil-postulante.component.html',
+    styleUrl: './perfil-postulante.component.scss'
 })
 export class PerfilPostulanteComponent {
   public fotoEditable: boolean = false;

@@ -4,11 +4,10 @@ import { PostulanteService } from '../../../services/postulante.service';
 import { UserService } from '../../../services/user.service';
 
 @Component({
-  selector: 'app-nombre-popup',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './nombre-popup.component.html',
-  styleUrl: './nombre-popup.component.scss',
+    selector: 'app-nombre-popup',
+    imports: [ReactiveFormsModule],
+    templateUrl: './nombre-popup.component.html',
+    styleUrl: './nombre-popup.component.scss'
 })
 export class NombrePopupComponent implements OnInit {
   @Output() closeModalEvent = new EventEmitter<void>();

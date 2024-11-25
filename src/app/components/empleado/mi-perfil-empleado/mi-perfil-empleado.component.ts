@@ -6,11 +6,10 @@ import { Router } from '@angular/router';
 import { CrearEmpleadoService } from '../../../services/crear-empleado.service';
 
 @Component({
-  selector: 'app-mi-perfil-empleado',
-  standalone: true,
-  imports: [EliminarEmpleadoModalComponent, ModificarEmpleadoModalComponent],
-  templateUrl: './mi-perfil-empleado.component.html',
-  styleUrl: './mi-perfil-empleado.component.scss',
+    selector: 'app-mi-perfil-empleado',
+    imports: [EliminarEmpleadoModalComponent, ModificarEmpleadoModalComponent],
+    templateUrl: './mi-perfil-empleado.component.html',
+    styleUrl: './mi-perfil-empleado.component.scss'
 })
 export class MiPerfilEmpleadoComponent {
   public userId = '';

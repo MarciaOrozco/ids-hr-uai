@@ -4,11 +4,10 @@ import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 
 @Component({
-  selector: 'app-trabajos',
-  standalone: true,
-  imports: [TrabajoItemComponent],
-  templateUrl: './trabajos.component.html',
-  styleUrl: './trabajos.component.scss',
+    selector: 'app-trabajos',
+    imports: [TrabajoItemComponent],
+    templateUrl: './trabajos.component.html',
+    styleUrl: './trabajos.component.scss'
 })
 export class TrabajosComponent {
   public userId: any = '';

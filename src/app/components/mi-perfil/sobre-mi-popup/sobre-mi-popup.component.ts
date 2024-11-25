@@ -3,11 +3,10 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { PostulanteService } from '../../../services/postulante.service';
 
 @Component({
-  selector: 'app-sobre-mi-popup',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './sobre-mi-popup.component.html',
-  styleUrl: './sobre-mi-popup.component.scss',
+    selector: 'app-sobre-mi-popup',
+    imports: [ReactiveFormsModule],
+    templateUrl: './sobre-mi-popup.component.html',
+    styleUrl: './sobre-mi-popup.component.scss'
 })
 export class SobreMiPopupComponent implements OnInit {
   @Output() closeModalEvent = new EventEmitter<void>();

@@ -2,11 +2,10 @@ import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { CrearEmpleadoService } from '../../../services/crear-empleado.service';
 
 @Component({
-  selector: 'app-eliminar-empleado-modal',
-  standalone: true,
-  imports: [],
-  templateUrl: './eliminar-empleado-modal.component.html',
-  styleUrl: './eliminar-empleado-modal.component.scss',
+    selector: 'app-eliminar-empleado-modal',
+    imports: [],
+    templateUrl: './eliminar-empleado-modal.component.html',
+    styleUrl: './eliminar-empleado-modal.component.scss'
 })
 export class EliminarEmpleadoModalComponent implements OnInit {
   @Input() empleadoId: any = null;

@@ -3,11 +3,10 @@ import { UserService } from '../../services/user.service';
 import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [NgIf],
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+    selector: 'app-navbar',
+    imports: [NgIf],
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
   public isPostulante: boolean = false;

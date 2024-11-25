@@ -9,11 +9,10 @@ import { debounceTime } from 'rxjs';
 import { PostulanteService } from '../../../services/postulante.service';
 
 @Component({
-  selector: 'app-modificar-empleos',
-  standalone: true,
-  imports: [ReactiveFormsModule, NgFor],
-  templateUrl: './modificar-empleos.component.html',
-  styleUrl: './modificar-empleos.component.scss',
+    selector: 'app-modificar-empleos',
+    imports: [ReactiveFormsModule, NgFor],
+    templateUrl: './modificar-empleos.component.html',
+    styleUrl: './modificar-empleos.component.scss'
 })
 export class ModificarEmpleosComponent implements OnInit {
   public empleoId: string | null = '';

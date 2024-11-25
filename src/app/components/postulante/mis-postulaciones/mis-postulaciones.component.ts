@@ -5,11 +5,10 @@ import { Router } from '@angular/router';
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-mis-postulaciones',
-  standalone: true,
-  imports: [NgClass],
-  templateUrl: './mis-postulaciones.component.html',
-  styleUrl: './mis-postulaciones.component.scss',
+    selector: 'app-mis-postulaciones',
+    imports: [NgClass],
+    templateUrl: './mis-postulaciones.component.html',
+    styleUrl: './mis-postulaciones.component.scss'
 })
 export class MisPostulacionesComponent {
   public userId: any = '';

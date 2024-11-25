@@ -12,11 +12,10 @@ import { NgFor, NgIf } from '@angular/common';
 import { debounceTime } from 'rxjs';
 
 @Component({
-  selector: 'app-habilidades-popup',
-  standalone: true,
-  imports: [ReactiveFormsModule, NgFor, NgIf],
-  templateUrl: './habilidades-popup.component.html',
-  styleUrl: './habilidades-popup.component.scss',
+    selector: 'app-habilidades-popup',
+    imports: [ReactiveFormsModule, NgFor, NgIf],
+    templateUrl: './habilidades-popup.component.html',
+    styleUrl: './habilidades-popup.component.scss'
 })
 export class HabilidadesPopupComponent implements OnInit {
   @Output() closeModalEvent = new EventEmitter<void>();

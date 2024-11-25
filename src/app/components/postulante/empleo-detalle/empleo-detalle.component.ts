@@ -7,11 +7,10 @@ import { NgFor, NgIf } from '@angular/common';
 import { PostulanteService } from '../../../services/postulante.service';
 
 @Component({
-  selector: 'app-empleo-detalle',
-  standalone: true,
-  imports: [NgFor],
-  templateUrl: './empleo-detalle.component.html',
-  styleUrl: './empleo-detalle.component.scss',
+    selector: 'app-empleo-detalle',
+    imports: [NgFor],
+    templateUrl: './empleo-detalle.component.html',
+    styleUrl: './empleo-detalle.component.scss'
 })
 export class EmpleoDetalleComponent {
   empleoId: string | null = '';

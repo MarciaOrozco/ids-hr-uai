@@ -6,11 +6,10 @@ import { NgFor } from '@angular/common';
 import { PostulacionesService } from '../../../services/postulaciones.service';
 
 @Component({
-  selector: 'app-postulaciones',
-  standalone: true,
-  imports: [NgFor],
-  templateUrl: './postulaciones.component.html',
-  styleUrl: './postulaciones.component.scss',
+    selector: 'app-postulaciones',
+    imports: [NgFor],
+    templateUrl: './postulaciones.component.html',
+    styleUrl: './postulaciones.component.scss'
 })
 export class PostulacionesComponent {
   public empleoId: string | null = '';

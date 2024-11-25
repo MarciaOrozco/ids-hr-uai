@@ -3,11 +3,10 @@ import { PostulanteService } from '../../../services/postulante.service';
 import { UserService } from '../../../services/user.service';
 
 @Component({
-  selector: 'app-eliminar-usuario-popup',
-  standalone: true,
-  imports: [],
-  templateUrl: './eliminar-usuario-popup.component.html',
-  styleUrl: './eliminar-usuario-popup.component.scss',
+    selector: 'app-eliminar-usuario-popup',
+    imports: [],
+    templateUrl: './eliminar-usuario-popup.component.html',
+    styleUrl: './eliminar-usuario-popup.component.scss'
 })
 export class EliminarUsuarioPopupComponent {
   @Output() closeModalEvent = new EventEmitter<void>();

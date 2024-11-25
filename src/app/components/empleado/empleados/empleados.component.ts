@@ -3,11 +3,10 @@ import { EmpleadosItemComponent } from '../empleados-item/empleados-item.compone
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-empleados',
-  standalone: true,
-  imports: [EmpleadosItemComponent],
-  templateUrl: './empleados.component.html',
-  styleUrl: './empleados.component.scss',
+    selector: 'app-empleados',
+    imports: [EmpleadosItemComponent],
+    templateUrl: './empleados.component.html',
+    styleUrl: './empleados.component.scss'
 })
 export class EmpleadosComponent {
   constructor(private router: Router) {}

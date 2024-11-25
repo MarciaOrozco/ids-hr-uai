@@ -8,11 +8,10 @@ import {
 import { PostulanteService } from '../../../services/postulante.service';
 
 @Component({
-  selector: 'app-estudios-popup',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './estudios-popup.component.html',
-  styleUrl: './estudios-popup.component.scss',
+    selector: 'app-estudios-popup',
+    imports: [ReactiveFormsModule],
+    templateUrl: './estudios-popup.component.html',
+    styleUrl: './estudios-popup.component.scss'
 })
 export class EstudiosPopupComponent {
   @Output() closeModalEvent = new EventEmitter<void>();

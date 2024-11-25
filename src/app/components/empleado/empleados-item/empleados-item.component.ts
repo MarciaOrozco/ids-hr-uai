@@ -7,16 +7,15 @@ import { ModificarEmpleadoModalComponent } from '../modificar-empleado-modal/mod
 import { ModificarRoleComponent } from '../modificar-role/modificar-role.component';
 
 @Component({
-  selector: 'app-empleados-item',
-  standalone: true,
-  imports: [
-    EliminarEmpleadoModalComponent,
-    NgFor,
-    ModificarEmpleadoModalComponent,
-    ModificarRoleComponent,
-  ],
-  templateUrl: './empleados-item.component.html',
-  styleUrl: './empleados-item.component.scss',
+    selector: 'app-empleados-item',
+    imports: [
+        EliminarEmpleadoModalComponent,
+        NgFor,
+        ModificarEmpleadoModalComponent,
+        ModificarRoleComponent,
+    ],
+    templateUrl: './empleados-item.component.html',
+    styleUrl: './empleados-item.component.scss'
 })
 export class EmpleadosItemComponent implements OnInit {
   public empleados: any = [];

@@ -11,11 +11,10 @@ import { CrearEmpleadoService } from '../../../services/crear-empleado.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-modificar-empleado-modal',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './modificar-empleado-modal.component.html',
-  styleUrl: './modificar-empleado-modal.component.scss',
+    selector: 'app-modificar-empleado-modal',
+    imports: [ReactiveFormsModule],
+    templateUrl: './modificar-empleado-modal.component.html',
+    styleUrl: './modificar-empleado-modal.component.scss'
 })
 export class ModificarEmpleadoModalComponent implements OnInit {
   @Input() empleadoId: any = null;

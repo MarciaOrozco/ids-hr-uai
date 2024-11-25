@@ -12,11 +12,10 @@ import { CrearEmpleadoService } from '../../../services/crear-empleado.service';
 import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-crear-empleado',
-  standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
-  templateUrl: './crear-empleado.component.html',
-  styleUrl: './crear-empleado.component.scss',
+    selector: 'app-crear-empleado',
+    imports: [ReactiveFormsModule, NgIf],
+    templateUrl: './crear-empleado.component.html',
+    styleUrl: './crear-empleado.component.scss'
 })
 export class CrearEmpleadoComponent {
   registerEmpleadoForm = new FormGroup({

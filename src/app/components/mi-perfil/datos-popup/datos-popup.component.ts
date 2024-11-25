@@ -6,11 +6,10 @@ import { Ciudades, Pais, Provincia } from '../../../interfaces/ciudad';
 import { NgFor, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-datos-popup',
-  standalone: true,
-  imports: [ReactiveFormsModule, NgFor],
-  templateUrl: './datos-popup.component.html',
-  styleUrl: './datos-popup.component.scss',
+    selector: 'app-datos-popup',
+    imports: [ReactiveFormsModule, NgFor],
+    templateUrl: './datos-popup.component.html',
+    styleUrl: './datos-popup.component.scss'
 })
 export class DatosPopupComponent {
   @Output() closeModalEvent = new EventEmitter<void>();

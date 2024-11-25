@@ -10,11 +10,10 @@ import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-olvido-clave',
-  standalone: true,
-  imports: [ReactiveFormsModule, NgIf],
-  templateUrl: './olvido-clave.component.html',
-  styleUrls: ['./olvido-clave.component.scss'],
+    selector: 'app-olvido-clave',
+    imports: [ReactiveFormsModule, NgIf],
+    templateUrl: './olvido-clave.component.html',
+    styleUrls: ['./olvido-clave.component.scss']
 })
 export class OlvidoClaveComponent {
   recoveyPasswordForm = new FormGroup({

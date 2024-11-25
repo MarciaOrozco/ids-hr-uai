@@ -8,11 +8,10 @@ import {
 import { PostulanteService } from '../../../services/postulante.service';
 
 @Component({
-  selector: 'app-experiencias-popup',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './experiencias-popup.component.html',
-  styleUrl: './experiencias-popup.component.scss',
+    selector: 'app-experiencias-popup',
+    imports: [ReactiveFormsModule],
+    templateUrl: './experiencias-popup.component.html',
+    styleUrl: './experiencias-popup.component.scss'
 })
 export class ExperienciasPopupComponent implements OnInit {
   @Output() closeModalEvent = new EventEmitter<void>();

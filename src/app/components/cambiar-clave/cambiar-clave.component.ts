@@ -8,11 +8,10 @@ import {
 import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-cambiar-clave',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './cambiar-clave.component.html',
-  styleUrls: ['./cambiar-clave.component.scss'],
+    selector: 'app-cambiar-clave',
+    imports: [ReactiveFormsModule],
+    templateUrl: './cambiar-clave.component.html',
+    styleUrls: ['./cambiar-clave.component.scss']
 })
 export class CambiarClaveComponent {
   recoveyPasswordForm = new FormGroup({
