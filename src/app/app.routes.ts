@@ -23,7 +23,7 @@ import { PostulacionesComponent } from './components/postulaciones/postulaciones
 import { PerfilPostulanteComponent } from './components/postulaciones/perfil-postulante/perfil-postulante.component';
 import { OlvidoClaveCambioComponent } from './components/olvido-clave-cambio/olvido-clave-cambio.component';
 import { MiPerfilEmpleadoComponent } from './components/empleado/mi-perfil-empleado/mi-perfil-empleado.component';
-
+import { MetricsComponent } from './components/metrics/metrics.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [noAuthGuard] },
@@ -90,6 +90,11 @@ export const routes: Routes = [
     path: 'ver-postulaciones/:id',
     canActivate: [authGuard, RoleEmpleadoGuard],
     component: PostulacionesComponent,
+  },
+  {
+    path: 'metricas',
+    canActivate: [authGuard],
+    component: MetricsComponent,
   },
   { path: '**', redirectTo: '/login' },
 ];
