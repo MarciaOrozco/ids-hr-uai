@@ -13,4 +13,12 @@ export class MetricsService {
   getUserRegistrationsByMonth(): Observable<any> {
     return this.http.get(`${this.baseUrl}/user-registrations`);
   }
+
+  getApplicationsByStatus(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/applications-by-status`);
+  }
+
+  getLoginsByMonth(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/logins-by-month`);
+  }
 }

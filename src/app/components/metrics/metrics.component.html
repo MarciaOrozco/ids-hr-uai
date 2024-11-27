@@ -1,9 +1,35 @@
-<!-- src/app/components/metrics/metrics.component.html -->
+<h2 class="title">Cantidad de registrados por mes</h2>
 <div style="width: 100%; height: 400px">
   <canvas
     baseChart
-    [datasets]="chartData"
-    [labels]="chartLabels"
+    [datasets]="userChartData"
+    [labels]="userChartLabels"
+    [options]="chartOptions"
+    [legend]="chartLegend"
+    [type]="chartType"
+  >
+  </canvas>
+</div>
+
+<h2 class="title">Cantidad de aplicaciones por mes y status</h2>
+<div style="width: 100%; height: 400px">
+  <canvas
+    baseChart
+    [datasets]="applicationChartData"
+    [labels]="applicationChartLabels"
+    [options]="chartOptions"
+    [legend]="chartLegend"
+    [type]="chartType"
+  >
+  </canvas>
+</div>
+
+<h2 class="title">Cantidad de logins por mes</h2>
+<div style="width: 100%; height: 400px">
+  <canvas
+    baseChart
+    [datasets]="loginChartData"
+    [labels]="loginChartLabels"
     [options]="chartOptions"
     [legend]="chartLegend"
     [type]="chartType"
