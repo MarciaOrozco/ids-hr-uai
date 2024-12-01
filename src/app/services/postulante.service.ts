@@ -107,4 +107,10 @@ export class PostulanteService {
       `${this.myAppUrl}postulantes/get-postulacion?empleoId=${empleoId}&postulanteId=${postulanteId}`
     );
   }
+
+  public getConcordancia(empleoId: any, postulanteId: any): Observable<any> {
+    return this.http.get(
+      `${this.myAppUrl}postulantes/get-concordancia?empleoId=${empleoId}&postulanteId=${postulanteId}`
+    );
+  }
 }

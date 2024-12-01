@@ -24,6 +24,7 @@ import { PerfilPostulanteComponent } from './components/postulaciones/perfil-pos
 import { OlvidoClaveCambioComponent } from './components/olvido-clave-cambio/olvido-clave-cambio.component';
 import { MiPerfilEmpleadoComponent } from './components/empleado/mi-perfil-empleado/mi-perfil-empleado.component';
 import { MetricsComponent } from './components/metrics/metrics.component';
+import { EmpleosSugeridosComponent } from './components/empleos/empleos-sugeridos/empleos-sugeridos.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [noAuthGuard] },
@@ -95,6 +96,11 @@ export const routes: Routes = [
     path: 'metricas',
     canActivate: [authGuard],
     component: MetricsComponent,
+  },
+  {
+    path: 'empleos-sugeridos',
+    canActivate: [authGuard, RolePostulanteGuard],
+    component: EmpleosSugeridosComponent,
   },
   { path: '**', redirectTo: '/login' },
 ];

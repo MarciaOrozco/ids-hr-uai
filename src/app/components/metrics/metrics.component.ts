@@ -47,8 +47,6 @@ export class MetricsComponent implements OnInit {
     this.metricsService
       .getUserRegistrationsByMonth()
       .subscribe((data: any[]) => {
-        console.log(data);
-
         const uniqueLabels = Array.from(
           new Set(data.map((d) => `${d.month}/${d.year}`))
         );
@@ -72,8 +70,6 @@ export class MetricsComponent implements OnInit {
 
   private loadApplicationsByStatus(): void {
     this.metricsService.getApplicationsByStatus().subscribe((data: any[]) => {
-      console.log(data);
-
       const uniqueLabels = Array.from(
         new Set(data.map((d) => `${d.month}/${d.year}`))
       );
@@ -97,8 +93,6 @@ export class MetricsComponent implements OnInit {
 
   private loadLoginsByGroupAndMonth(): void {
     this.metricsService.getLoginsByMonth().subscribe((data: any[]) => {
-      console.log(data);
-
       const uniqueLabels = Array.from(
         new Set(data.map((d) => `${d.month}/${d.year}`))
       );

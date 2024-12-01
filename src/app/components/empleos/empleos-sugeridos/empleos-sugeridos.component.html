@@ -1,0 +1,43 @@
+<div class="trabajos-container">
+  <div class="container">
+    <div *ngFor="let empleo of empleos" class="card-container">
+      <div class="header">
+        <div class="job-title">{{ empleo.Titulo }}</div>
+        <div class="info-header">
+          {{ empleo.Remoto ? "Remoto" : "Presencial" }}
+        </div>
+      </div>
+      <div class="concordancia">
+        Porcentaje de concordancia:
+        <div class="concordancia-result">
+          {{ porcentajesConcordancia[empleo.id] || "Cargando..." }}%
+        </div>
+      </div>
+      <div class="concordancia">
+        Habilidades que concuerdan con este empleo:
+        <div class="concordancia-result">
+          {{ habilidadesComunes[empleo.id] || "Cargando..." }}
+        </div>
+      </div>
+      <div class="descripcion-container">{{ empleo.Descripcion }}</div>
+      <div class="info-ciudad">{{ empleo.Ciudad.Nombre }}</div>
+      <div class="footer-container">
+        <div class="skills-container">
+          <p class="skills">Skills:</p>
+          <div
+            *ngFor="let habilidad of empleo.habilidades"
+            class="lista-skills"
+          >
+            {{ habilidad.TipoHabilidad.Tipo }}
+          </div>
+        </div>
+
+        <div class="button-container">
+          <button class="apply-button" (click)="verDetalleEmpleo(empleo.id)">
+            Aplicar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
