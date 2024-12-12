@@ -72,3 +72,44 @@
     }
   </div>
 </div>
+
+<div class="card-container">
+  <div class="container">
+    <div class="header">
+      <div class="job-title">Postulantes Sugeridos</div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Porcentaje de concordancia</th>
+          <th>Habilidades del postulante</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let postulante of postulantes">
+          <td>{{ postulante.Persona.Nombre }}</td>
+          <td>{{ postulante.Persona.Apellido }}</td>
+          <td>{{ postulante.concordancia }}%</td>
+          <td>
+            <ul>
+              <li *ngFor="let habilidad of postulante.habilidadesPostulante">
+                {{ habilidad }}
+              </li>
+            </ul>
+          </td>
+          <td>
+            <button
+              class="apply-button"
+              (click)="contactarPostulante(postulante)"
+            >
+              Contactar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

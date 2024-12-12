@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { EmpleosService } from '../../../services/empleos.service';
-import { AsyncPipe, NgFor } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { Router } from '@angular/router';
 import { PostulanteService } from '../../../services/postulante.service';
 
 @Component({
   selector: 'app-empleos-sugeridos',
-  imports: [NgFor, AsyncPipe],
+  imports: [NgFor],
   templateUrl: './empleos-sugeridos.component.html',
   styleUrl: './empleos-sugeridos.component.scss',
 })

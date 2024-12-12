@@ -14,29 +14,33 @@ export class PostulanteService {
     this.myAppUrl = environment.endpoint;
   }
 
-  getPostulante(userId: number): Observable<any> {
+  public getPostulante(userId: number): Observable<any> {
     return this.http.get(`${this.myAppUrl}postulantes/getPostulante/` + userId);
   }
 
-  getFormaciones(postulanteId: number): Observable<any> {
+  public getPostulantes(): Observable<any> {
+    return this.http.get(`${this.myAppUrl}postulantes/getPostulantes`);
+  }
+
+  public getFormaciones(postulanteId: number): Observable<any> {
     return this.http.get(
       `${this.myAppUrl}postulantes/getFormaciones/` + postulanteId
     );
   }
 
-  getExperiencias(postulanteId: number): Observable<any> {
+  public getExperiencias(postulanteId: number): Observable<any> {
     return this.http.get(
       `${this.myAppUrl}postulantes/getExperiencias/` + postulanteId
     );
   }
 
-  getHabilidades(postulanteId: number): Observable<any> {
+  public getHabilidades(postulanteId: number): Observable<any> {
     return this.http.get(
       `${this.myAppUrl}postulantes/getHabilidades/` + postulanteId
     );
   }
 
-  getTipoHabilidades(): Observable<any> {
+  public getTipoHabilidades(): Observable<any> {
     return this.http.get(`${this.myAppUrl}postulantes/getTipoHabilidades/`);
   }
 
