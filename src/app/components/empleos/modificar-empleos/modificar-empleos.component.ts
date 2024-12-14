@@ -9,13 +9,14 @@ import { debounceTime } from 'rxjs';
 import { PostulanteService } from '../../../services/postulante.service';
 
 @Component({
-    selector: 'app-modificar-empleos',
-    imports: [ReactiveFormsModule, NgFor],
-    templateUrl: './modificar-empleos.component.html',
-    styleUrl: './modificar-empleos.component.scss'
+  selector: 'app-modificar-empleos',
+  imports: [ReactiveFormsModule, NgFor],
+  templateUrl: './modificar-empleos.component.html',
+  styleUrl: './modificar-empleos.component.scss',
 })
 export class ModificarEmpleosComponent implements OnInit {
   public empleoId: string | null = '';
+  public userId = '';
   public paises: Pais[] = [];
   public provincias: Provincia[] = [];
   public ciudades: Ciudades[] = [];
@@ -48,6 +49,7 @@ export class ModificarEmpleosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.userId = localStorage.getItem('userId')!;
     this.empleoId = this.route.snapshot.paramMap.get('id');
 
     this._empleosService.getEmpleo(this.empleoId).subscribe((empleo) => {
@@ -149,6 +151,7 @@ export class ModificarEmpleosComponent implements OnInit {
       ciudadId: this.empleoForm.value.ciudad,
       remoto: this.empleoForm.value.esRemoto === 'remoto' ? true : false,
       empresa: this.empleoForm.value.empresa,
+      userId: this.userId,
     };
 
     const habilidadesEliminadas = this.originalHabilidades.filter(
@@ -186,8 +189,13 @@ export class ModificarEmpleosComponent implements OnInit {
   }
 
   public eliminarEmpleo() {
+    const empleoEliminado = {
+      id: this.empleoId,
+      userId: this.userId,
+    };
+
     if (this.empleoId !== null) {
-      this._empleosService.eliminarEmpleo(this.empleoId).subscribe((res) => {
+      this._empleosService.eliminarEmpleo(empleoEliminado).subscribe((res) => {
         this.router.navigate(['/trabajos']);
       });
     }

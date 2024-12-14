@@ -39,9 +39,9 @@ export class EmpleosService {
     );
   }
 
-  public eliminarEmpleo(empleoId: any): Observable<any> {
+  public eliminarEmpleo(empleo: any): Observable<any> {
     return this.http.delete(
-      `${this.myAppUrl}empleos/eliminar-empleo/` + empleoId
+      `${this.myAppUrl}empleos/eliminar-empleo/${empleo.id}/${empleo.userId}`
     );
   }
 

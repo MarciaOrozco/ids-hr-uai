@@ -52,11 +52,20 @@ export class UserService {
     return this.userGroupSubject.asObservable();
   }
 
-  public logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-    this.loggedInSubject.next(false);
-    this.router.navigate(['/login']);
+  public logout(userId: string): void {
+    this.http
+      .post(`${this.myAppUrl}${this.myApiUrl}/login-logout-data`, { userId })
+      .subscribe(
+        () => {
+          localStorage.removeItem('token');
+          localStorage.removeItem('userId');
+          this.loggedInSubject.next(false);
+          this.router.navigate(['/login']);
+        },
+        (error) => {
+          console.error('Error durante el logout:', error);
+        }
+      );
   }
 
   public sendRecoveryEmail(email: any): Observable<void> {

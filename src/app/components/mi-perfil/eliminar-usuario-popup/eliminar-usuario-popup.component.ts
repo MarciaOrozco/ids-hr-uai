@@ -3,10 +3,10 @@ import { PostulanteService } from '../../../services/postulante.service';
 import { UserService } from '../../../services/user.service';
 
 @Component({
-    selector: 'app-eliminar-usuario-popup',
-    imports: [],
-    templateUrl: './eliminar-usuario-popup.component.html',
-    styleUrl: './eliminar-usuario-popup.component.scss'
+  selector: 'app-eliminar-usuario-popup',
+  imports: [],
+  templateUrl: './eliminar-usuario-popup.component.html',
+  styleUrl: './eliminar-usuario-popup.component.scss',
 })
 export class EliminarUsuarioPopupComponent {
   @Output() closeModalEvent = new EventEmitter<void>();
@@ -27,7 +27,7 @@ export class EliminarUsuarioPopupComponent {
 
   public eliminarUsuario() {
     this._postulanteService.eliminarPostulante(this.userId).subscribe((res) => {
-      this._userService.logout();
+      this._userService.logout(this.userId);
     });
   }
 }

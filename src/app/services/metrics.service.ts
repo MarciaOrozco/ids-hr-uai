@@ -21,4 +21,8 @@ export class MetricsService {
   getLoginsByMonth(): Observable<any> {
     return this.http.get(`${this.baseUrl}/logins-by-month`);
   }
+
+  getSessionDurations(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/session-durations`);
+  }
 }

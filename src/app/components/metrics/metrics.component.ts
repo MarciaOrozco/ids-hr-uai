@@ -35,12 +35,33 @@ export class MetricsComponent implements OnInit {
     },
   };
 
+  public sessionDurationChartData: any[] = [];
+  public sessionDurationChartLabels: string[] = [];
+  public sessionDurationChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        ticks: {
+          stepSize: 15,
+          callback: function (value: any) {
+            return Number.isInteger(value) ? value : '';
+          },
+        },
+      },
+    },
+  };
+
+  public sessionDurationChartLegend = true;
+  public sessionDurationChartType: any = 'bar';
+
   constructor(private metricsService: MetricsService) {}
 
   ngOnInit(): void {
     this.loadUserRegistrations();
     this.loadApplicationsByStatus();
     this.loadLoginsByGroupAndMonth();
+    this.loadSessionDurations();
   }
 
   private loadUserRegistrations(): void {
@@ -108,6 +129,34 @@ export class MetricsComponent implements OnInit {
               (d) => d.month == month && d.year == year && d.group === group
             );
             return match ? match.totalLogins : 0;
+          }),
+        };
+      });
+    });
+  }
+
+  private loadSessionDurations(): void {
+    this.metricsService.getSessionDurations().subscribe((data: any[]) => {
+      const uniqueLabels = Array.from(
+        new Set(data.map((d) => `${d.month}/${d.year}`))
+      );
+      this.sessionDurationChartLabels = uniqueLabels;
+
+      const groups = ['Postulante', 'Empleado', 'Administrador'];
+      this.sessionDurationChartData = groups.map((group) => {
+        return {
+          label: `${group} Session Duration (mins)`,
+          data: uniqueLabels.map((label) => {
+            const [month, year] = label.split('/');
+            const groupData = data.filter(
+              (d) => d.month == month && d.year == year && d.group === group
+            );
+
+            const avgDuration =
+              groupData.reduce((acc, curr) => acc + curr.sessionDuration, 0) /
+              (groupData.length || 1);
+
+            return Math.round(avgDuration / 60);
           }),
         };
       });
