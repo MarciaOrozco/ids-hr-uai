@@ -25,4 +25,8 @@ export class MetricsService {
   getSessionDurations(): Observable<any> {
     return this.http.get(`${this.baseUrl}/session-durations`);
   }
+
+  getEmploymentAuditMetrics(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/promedio-empleos`);
+  }
 }

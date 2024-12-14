@@ -12,12 +12,15 @@ export class MetricsComponent implements OnInit {
   public userChartData: any[] = [];
   public applicationChartData: any[] = [];
   public loginChartData: any[] = [];
+  public empleoChartData: any[] = [];
 
   public userChartLabels: string[] = [];
   public applicationChartLabels: string[] = [];
   public loginChartLabels: string[] = [];
+  public empleoChartLabels: string[] = [];
 
   public chartType: any = 'bar';
+  public chartTypeEmpleo: any = 'pie';
   public chartLegend = true;
 
   public chartOptions = {
@@ -62,6 +65,7 @@ export class MetricsComponent implements OnInit {
     this.loadApplicationsByStatus();
     this.loadLoginsByGroupAndMonth();
     this.loadSessionDurations();
+    this.loadEmpleoMetrics();
   }
 
   private loadUserRegistrations(): void {
@@ -160,6 +164,29 @@ export class MetricsComponent implements OnInit {
           }),
         };
       });
+    });
+  }
+
+  private loadEmpleoMetrics(): void {
+    this.metricsService.getEmploymentAuditMetrics().subscribe((data: any[]) => {
+      console.log(data, 'Data recibida para métricas de empleo');
+
+      this.empleoChartLabels = ['Alta', 'Baja', 'Modificación'];
+
+      const actionTotals = this.empleoChartLabels.map((action) => {
+        const total = data
+          .filter((d) => d.action === action)
+          .reduce((sum, current) => sum + current.totalActions, 0);
+        return total;
+      });
+
+      this.empleoChartData = [
+        {
+          data: actionTotals,
+          backgroundColor: ['#f7abbb', '#9cccf4', '#fccba3'],
+          hoverBackgroundColor: ['#f1a3b4', '#96c5ec', '#fcc69b'],
+        },
+      ];
     });
   }
 }

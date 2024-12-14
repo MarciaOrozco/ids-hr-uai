@@ -51,4 +51,17 @@
     >
     </canvas>
   </div>
+
+  <h2 class="title">Auditoria de empleos</h2>
+  <div style="width: 100%; height: 400px">
+    <canvas
+      baseChart
+      [datasets]="empleoChartData"
+      [labels]="empleoChartLabels"
+      [options]="chartOptions"
+      [legend]="chartLegend"
+      [type]="chartTypeEmpleo"
+    >
+    </canvas>
+  </div>
 </div>
