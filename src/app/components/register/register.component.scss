@@ -65,3 +65,19 @@ img {
   font-size: 12px;
   font-family: "Montserrat", sans-serif;
 }
+
+.success-button {
+  background-color: #7eca24;
+  width: 328px;
+  height: 50px;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+
+  font-family: "Montserrat", sans-serif;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}

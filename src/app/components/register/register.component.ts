@@ -10,12 +10,13 @@ import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 
 @Component({
-    selector: 'app-register',
-    imports: [ReactiveFormsModule, NgIf],
-    templateUrl: './register.component.html',
-    styleUrl: './register.component.scss'
+  selector: 'app-register',
+  imports: [ReactiveFormsModule, NgIf],
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
+  public registroexitoso: boolean = false;
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     nombre: new FormControl('', Validators.required),
@@ -50,12 +51,16 @@ export class RegisterComponent {
 
     this._userService.registrarse(user).subscribe({
       next: (token: string) => {
-        this.router.navigate(['/login']);
+        this.registroexitoso = true;
       },
       error: (err: any) => {
         console.error('Error en el registro:', err);
         alert('Registro fallido. Por favor, revisa tus credenciales.');
       },
     });
+  }
+
+  public goBacktoLogin() {
+    this.router.navigate(['/login']);
   }
 }

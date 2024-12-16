@@ -42,4 +42,11 @@ export class PostulacionesService {
       `${this.myAppUrl}postulaciones/eliminar-postulacion/` + postulacionId
     );
   }
+
+  public contactarPostulante(postulante: any): Observable<any> {
+    return this.http.post(
+      `${this.myAppUrl}postulantes/contactar-postulante/`,
+      postulante
+    );
+  }
 }

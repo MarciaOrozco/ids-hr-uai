@@ -108,3 +108,22 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.eliminar-empleado {
+  color: #6f68f7;
+  font-weight: bold;
+  font-size: 20px;
+}

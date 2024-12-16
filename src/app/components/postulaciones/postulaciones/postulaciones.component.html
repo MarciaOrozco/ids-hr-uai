@@ -78,6 +78,7 @@
     <div class="header">
       <div class="job-title">Postulantes Sugeridos</div>
     </div>
+    @if (postulantes.length > 0) {
     <table>
       <thead>
         <tr>
@@ -111,5 +112,8 @@
         </tr>
       </tbody>
     </table>
+    } @else {
+    <div>No existen postulaciones sugeridos para este empleo</div>
+    }
   </div>
 </div>

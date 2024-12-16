@@ -1,6 +1,10 @@
 <div class="modal-overlay" (click)="closeModal()"></div>
 <div class="empleados-container">
   <div class="card-container">
+    <div class="modal-header">
+      <h2 class="eliminar-empleado">Modificar datos del empleado</h2>
+      <button class="close-button" (click)="closeModal()">×</button>
+    </div>
     <div class="first-container">
       <div class="foto-container container">
         @if (user.img) {

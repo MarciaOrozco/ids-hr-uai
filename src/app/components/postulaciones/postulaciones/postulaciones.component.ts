@@ -46,7 +46,6 @@ export class PostulacionesComponent {
       .getPostulaciones(this.empleoId)
       .subscribe((postulaciones) => {
         this.postulaciones = postulaciones;
-        console.log(postulaciones);
       });
 
     this._postulanteService.getPostulantes().subscribe((postulantes) => {
@@ -74,13 +73,14 @@ export class PostulacionesComponent {
 
   public contactarPostulante(postulacion: any) {
     this._userService
-      .getUserGrupo(postulacion.Postulante.Persona.UsuarioId)
+      .getUserGrupo(postulacion.Persona.UsuarioId)
       .subscribe((res: any) => {
-        const email = res.Email;
+        const postulante = {
+          empleoId: this.empleoId,
+          email: res.Email,
+        };
+
+        this._postulacionesService.contactarPostulante(postulante).subscribe();
       });
-
-    const empleoId = postulacion.EmpleoId;
-
-    // http://localhost:4200/detalle-empleo/12
   }
 }
